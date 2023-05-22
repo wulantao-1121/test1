@@ -1,0 +1,103 @@
+form,
+input {
+  padding: 0;
+  margin: 0;
+}
+.instrument_container .yiqi_search {
+  margin: 20px auto;
+  width: 1200px;
+}
+.instrument_container .yiqi_search .demo-form-inline {
+  display: flex;
+  height: 40px;
+}
+.instrument_container .yiqi_search .demo-form-inline .el-input {
+  width: 180px;
+}
+.instrument_container .yiqi_search .demo-form-inline .el-select,
+.instrument_container .yiqi_search .demo-form-inline .el-input,
+.instrument_container .yiqi_search .demo-form-inline .el-button {
+  margin: 0 6px;
+}
+.instrument_container .yiqi_list {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 1200px;
+}
+.instrument_container .yiqi_list .yiqi_ul {
+  width: 800px;
+}
+.instrument_container .yiqi_list .yiqi_ul .yiqi_li {
+  display: flex;
+  width: 800px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #000;
+  margin-bottom: 25px;
+}
+.instrument_container .yiqi_list .yiqi_ul .yiqi_li .yiqi_img {
+  width: 140px;
+  height: 140px;
+  background-color: yellow;
+}
+.instrument_container .yiqi_list .yiqi_ul .yiqi_li .yiqi_content {
+  padding-left: 20px;
+  width: 640px;
+}
+.instrument_container .yiqi_list .yiqi_ul .yiqi_li .yiqi_content h1 {
+  font-size: 22px;
+}
+.instrument_container .yiqi_list .yiqi_ul .yiqi_li .yiqi_content dl {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.instrument_container .yiqi_list .yiqi_ul .yiqi_li .yiqi_content dl dd {
+  width: 50%;
+  margin-bottom: 10px;
+}
+.instrument_container .yiqi_list .yiqi_hot {
+  width: 350px;
+  height: 100%;
+  padding: 0 0 20px 0;
+}
+.instrument_container .yiqi_list .yiqi_hot .yiqi_hot_title {
+  padding: 10px 0 10px 0;
+  border-bottom: 2px solid #000;
+  font-size: 20px;
+}
+.instrument_container .yiqi_list .yiqi_hot .yiqi_hot_list li {
+  padding: 5px 0;
+  width: 100%;
+}
+.instrument_container .yiqi_list .yiqi_hot .yiqi_hot_list li a {
+  font-size: 14px;
+}
+.instrument_container .yiqi_list .page {
+  width: 1200px;
+  margin: auto;
+}
+.instrument_container .yiqi_list .page .el-pagination {
+  margin: 30px 0 40px 0;
+  display: flex;
+  width: 500px;
+}
+.instrument_container .yiqi_list .page .el-pagination .btn-prev,
+.instrument_container .yiqi_list .page .el-pagination .btn-next {
+  width: 30px;
+  height: 30px;
+  background-color: #eee;
+}
+.instrument_container .yiqi_list .page .el-pagination .el-pager .number,
+.instrument_container .yiqi_list .page .el-pagination .el-pager .el-icon {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #eee;
+  color: #000;
+}
+.instrument_container .yiqi_list .page .el-pagination .el-pager li:not(.disabled).active {
+  color: #fff;
+  background-color: #122c67;
+}

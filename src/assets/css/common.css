@@ -1,0 +1,118 @@
+body {
+  background-color: #fff;
+}
+.login_box {
+  height: 30px;
+}
+.login_box .login_nav {
+  position: relative;
+  margin: auto;
+  width: 1200px;
+  height: 30px;
+}
+.login_box .login_nav .login_prompt {
+  position: absolute;
+  right: 10px;
+  font-size: 12px;
+  line-height: 30px;
+}
+.header_logo {
+  height: 140px;
+  background-color: #2b58ae;
+}
+.header_logo .logo {
+  margin: auto;
+  width: 1200px;
+  height: 140px;
+  background-color: #2b58ae;
+}
+.header_logo .logo img {
+  width: 570px;
+}
+.nav_body {
+  height: 45px;
+  background-color: #fff;
+}
+.nav_body .nav {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 1200px;
+  background-color: #fff;
+}
+.nav_body .nav .nav_list {
+  display: flex;
+  height: 45px;
+}
+.nav_body .nav .nav_list li {
+  width: 130px;
+}
+.nav_body .nav .nav_list li a {
+  display: block;
+  height: 45px;
+  text-align: center;
+  line-height: 45px;
+  color: #000;
+}
+.nav_body .nav .nav_list li a:hover {
+  color: #fff;
+  background-color: #2b58ae;
+}
+.nav_body .nav .search {
+  position: relative;
+  right: 0;
+  width: 330px;
+}
+.nav_body .nav .search .search_ipt {
+  width: 250px;
+  height: 44px;
+  font-size: 20px;
+  border: none;
+  border: 1px solid #000;
+  outline: none;
+}
+.nav_body .nav .search .search_btn {
+  position: absolute;
+  width: 80px;
+  height: 100%;
+}
+#crumbs {
+  display: flex;
+  justify-content: center;
+  height: 35px;
+  background-color: #ccc;
+}
+#crumbs .el-breadcrumb {
+  display: flex;
+  align-items: center;
+  width: 1200px;
+  height: 35px;
+}
+#crumbs .el-breadcrumb .el-breadcrumb__inner a {
+  font-weight: normal;
+}
+.footer {
+  height: 150px;
+  background-color: #1A4AA7;
+}
+.footer .footer_content {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 1200px;
+  height: 150px;
+}
+.footer .footer_content .footer_img {
+  display: flex;
+  align-items: center;
+  margin-right: 90px;
+  height: 150px;
+}
+.footer .footer_content .footer_img img {
+  width: 470px;
+}
+.footer .footer_content .textm p {
+  margin: 5px 0;
+  font-size: 12px;
+  color: #fff;
+}
