@@ -1,0 +1,140 @@
+// 仪器样式
+form,
+input {
+  padding: 0;
+  margin: 0;
+}
+
+.instrument_container {
+  .yiqi_search {
+    margin: 20px auto;
+    width: 1200px;
+
+    .demo-form-inline {
+      display: flex;
+      height: 40px;
+
+
+      .el-input {
+        width: 180px;
+      }
+
+      .el-select,
+      .el-input,
+      .el-button {
+        margin: 0 6px;
+      }
+
+    }
+
+  }
+
+  .yiqi_list {
+    // margin-top: 45px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 1200px;
+
+    .yiqi_ul {
+      // margin: auto;
+      width: 800px;
+
+
+      .yiqi_li {
+        display: flex;
+        width: 800px;
+        padding-bottom: 25px;
+        border-bottom: 1px dashed #ccc;
+        margin-bottom: 25px;
+
+        .yiqi_img {
+
+          width: 140px;
+          height: 140px;
+          background-color: yellow;
+        }
+
+        .yiqi_content {
+          padding-left: 20px;
+          width: 640px;
+
+          h1 {
+
+            font-size: 22px;
+          }
+
+          dl {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 30px;
+
+            dd {
+              width: 50%;
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .yiqi_hot {
+      width: 350px;
+      height: 100%;
+      padding: 0 0 20px 0;
+
+      .yiqi_hot_title {
+        padding: 10px 0 10px 0;
+        border-bottom: 2px solid #000;
+        font-size: 20px;
+      }
+
+      .yiqi_hot_list {
+        li {
+          padding: 5px 0;
+          width: 100%;
+
+          a {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .page {
+      width: 1200px;
+      margin: auto;
+
+      .el-pagination {
+        margin: 30px 0 40px 0;
+        display: flex;
+        width: 500px;
+
+        .btn-prev,
+        .btn-next {
+          width: 30px;
+          height: 30px;
+          background-color: #eee;
+        }
+
+        .el-pager {
+
+          .number,
+          .el-icon {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            background-color: #eee;
+            color: #000;
+          }
+
+          li:not(.disabled).active {
+            color: #fff;
+            background-color: #122c67;
+          }
+        }
+      }
+    }
+  }
+}

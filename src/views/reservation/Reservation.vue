@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import '@/assets/css/reservation.css'
+import '@/assets/css/reservation.less'
 export default {
   name: 'Reservation',
   data() {

@@ -1,0 +1,268 @@
+.my_content {
+  margin: auto;
+  width: 1200px;
+
+  .information {
+    padding: 30px 0;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .grxx_box {
+    display: flex;
+    padding-bottom: 30px;
+    height: 100%;
+
+    .left_sidebar {
+      // height: 900px;
+      width: 210px;
+      background-color: #2E4050;
+
+      .grxx_img {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 20px 0;
+
+        img {
+          width: 80px;
+          height: 80px;
+          background-color: green;
+          border-radius: 30px;
+        }
+
+        .grxx_name {
+          font-weight: normal;
+        }
+      }
+
+      .grxx_list {
+        width: 100%;
+        background-color: #2E4050;
+
+        li {
+          a {
+            display: block;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+
+            &:hover {
+              color: #000;
+              background-color: #fff;
+            }
+          }
+        }
+      }
+    }
+
+
+
+    .right_sidebar {
+      width: 990px;
+      // height: 900px;
+      background-color: #F4F7F9;
+
+      .right_header {
+        width: 100%;
+        margin-bottom: 10px;
+
+        .right_title {
+          height: 100%;
+          display: flex;
+          background-color: #fff;
+
+          .right_shiyong,
+          .right_weishiyong,
+          .right_shiyongzhong,
+          .right_collect {
+            background-color: #fff;
+
+            a {
+              display: block;
+              height: 40px;
+              line-height: 40px;
+              text-align: center;
+              width: 80px;
+              color: #000;
+            }
+
+            .active {
+              background-color: #409EFF;
+              color: #fff;
+            }
+
+
+          }
+        }
+
+        .xinzeng {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .yifabu {
+            margin: 0 10px;
+            font-size: 16px;
+          }
+
+          .yiqi_tianjia {
+            margin: 0 10px;
+            height: 40px;
+            width: 120px;
+          }
+        }
+      }
+
+      div {
+        .grxx_yiqi_list {
+          display: flex;
+          height: 800px;
+          width: 100%;
+          background-color: #fff;
+
+
+          .grxx_yiqi_ul {
+            width: 100%;
+
+            .grxx_yiqi_li {
+              display: flex;
+
+              .grxx_yiqi_img {
+                margin-right: 10px;
+
+                img {
+                  width: 130px;
+                  height: 130px;
+                }
+              }
+
+              .grxx_yiqi_xiangqing {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                height: 130px;
+
+                .grxx_yiqi_h1 {
+                  width: 100%;
+
+                  a {
+                    font-size: 24px;
+                  }
+
+                }
+
+                .grxx_yiqi_neirong {
+                  width: 100%;
+                  display: flex;
+                  justify-content: space-between;
+
+                  dl {
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 65%;
+
+                    dd {
+                      display: flex;
+                      align-items: center;
+                      width: 50%;
+                    }
+                  }
+
+                  .grxx_yiqi_time {
+                    font-size: 12px;
+                  }
+
+                  .grxx_yiqi_quxiao {
+                    width: 120px;
+                    height: 40px;
+                    color: #fff;
+
+                    &:hover {
+                      background-color: #78F263;
+                    }
+                  }
+
+                  .grxx_yiqi_shiyongzhong {
+                    width: 120px;
+                    height: 40px;
+                    color: #fff;
+                  }
+
+                  .grxx_yiqi_collect {
+                    display: flex;
+                    align-items: center;
+
+                    img {
+                      width: 20px;
+                      height: 20px;
+                      color: orange;
+                    }
+                  }
+
+                  .grxx_yiqi_share {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-end;
+                    align-items: center;
+                    width: 20%;
+
+                    .grxx_yiqi_xiugai,
+                    .grxx_yiqi_shanchu,
+                    .grxx_yiqi_weixiu,
+                    .grxx_yiqi_quxiaoweixiu {
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      width: 70px;
+                      height: 30px;
+                      font-size: 12px;
+                      color: #fff;
+                    }
+                  }
+                }
+              }
+            }
+
+          }
+        }
+
+        .page {
+          position: relative;
+          bottom: 0px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 15px;
+        }
+      }
+
+      .el-dialog {
+        .el-dialog__body {
+          .el-form {
+            display: flex;
+            flex-wrap: wrap;
+
+            .el-form-item {
+              width: 30%;
+            }
+
+            .gongnengtese,
+            .fujianpeizhi,
+            .zhuyishixiang {
+              width: 50%;
+
+              .el-textarea {
+                .el-textarea__inner {
+                  min-height: 100px !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

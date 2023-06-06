@@ -4,6 +4,7 @@
       <div class="right_title">
         <yishiyong></yishiyong>
         <weishiyong></weishiyong>
+        <shiyongzhong></shiyongzhong>
       </div>
     </div>
     <router-view></router-view>
@@ -11,14 +12,16 @@
 </template>
 
 <script>
-import '@/assets/css/my.css'
+import '@/assets/css/my.less'
 import yishiyong from '../yishiyong/yishiyong.vue'
 import weishiyong from '../weishiyong/weishiyong.vue'
+import shiyongzhong from '../shiyongzhong/shiyongzhong.vue'
 export default {
   name: 'right',
   components: {
     yishiyong,
-    weishiyong
+    weishiyong,
+    shiyongzhong
   }
 }
 </script>

@@ -8,133 +8,50 @@
     <div>
       <div class="grxx_yiqi_list">
         <ul class="grxx_yiqi_ul">
-          <li class="grxx_yiqi_li">
-            <div class="grxx_yiqi_img">
-              <img class="" src="" alt="" />
-            </div>
-            <div class="grxx_yiqi_xiangqing">
-              <h1 class="grxx_yiqi_h1"><a href="javascript:;">全数字化核磁共振仪</a></h1>
-              <div class="grxx_yiqi_neirong">
-                <dl>
-                  <dd>仪器分类：<span>样品处理</span></dd>
-                  <dd>仪器型号：<span>AVⅢ-400M</span></dd>
-                  <dd>所属系：<span>软件与大数据系</span></dd>
-                  <dd>放置位置：<span>1号教学楼906</span></dd>
-                </dl>
-                <div class="grxx_yiqi_collect">
-                  <img src="@/assets/images/收藏.png" alt="" />
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="grxx_yiqi_li">
-            <div class="grxx_yiqi_img">
-              <img class="" src="" alt="" />
-            </div>
-            <div class="grxx_yiqi_xiangqing">
-              <h1 class="grxx_yiqi_h1"><a href="javascript:;">全数字化核磁共振仪</a></h1>
-              <div class="grxx_yiqi_neirong">
-                <dl>
-                  <dd>仪器分类：<span>样品处理</span></dd>
-                  <dd>仪器型号：<span>AVⅢ-400M</span></dd>
-                  <dd>所属系：<span>软件与大数据系</span></dd>
-                  <dd>放置位置：<span>1号教学楼906</span></dd>
-                </dl>
-                <div class="grxx_yiqi_collect">
-                  <img src="@/assets/images/收藏.png" alt="" />
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="grxx_yiqi_li">
-            <div class="grxx_yiqi_img">
-              <img class="" src="" alt="" />
-            </div>
-            <div class="grxx_yiqi_xiangqing">
-              <h1 class="grxx_yiqi_h1"><a href="javascript:;">全数字化核磁共振仪</a></h1>
-              <div class="grxx_yiqi_neirong">
-                <dl>
-                  <dd>仪器分类：<span>样品处理</span></dd>
-                  <dd>仪器型号：<span>AVⅢ-400M</span></dd>
-                  <dd>所属系：<span>软件与大数据系</span></dd>
-                  <dd>放置位置：<span>1号教学楼906</span></dd>
-                </dl>
-                <div class="grxx_yiqi_collect">
-                  <img src="@/assets/images/收藏.png" alt="" />
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="grxx_yiqi_li">
-            <div class="grxx_yiqi_img">
-              <img class="" src="" alt="" />
-            </div>
-            <div class="grxx_yiqi_xiangqing">
-              <h1 class="grxx_yiqi_h1"><a href="javascript:;">全数字化核磁共振仪</a></h1>
-              <div class="grxx_yiqi_neirong">
-                <dl>
-                  <dd>仪器分类：<span>样品处理</span></dd>
-                  <dd>仪器型号：<span>AVⅢ-400M</span></dd>
-                  <dd>所属系：<span>软件与大数据系</span></dd>
-                  <dd>放置位置：<span>1号教学楼906</span></dd>
-                </dl>
-                <div class="grxx_yiqi_collect">
-                  <img src="@/assets/images/收藏.png" alt="" />
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="grxx_yiqi_li">
-            <div class="grxx_yiqi_img">
-              <img class="" src="" alt="" />
-            </div>
-            <div class="grxx_yiqi_xiangqing">
-              <h1 class="grxx_yiqi_h1"><a href="javascript:;">全数字化核磁共振仪</a></h1>
-              <div class="grxx_yiqi_neirong">
-                <dl>
-                  <dd>仪器分类：<span>样品处理</span></dd>
-                  <dd>仪器型号：<span>AVⅢ-400M</span></dd>
-                  <dd>所属系：<span>软件与大数据系</span></dd>
-                  <dd>放置位置：<span>1号教学楼906</span></dd>
-                </dl>
-                <div class="grxx_yiqi_collect">
-                  <img src="@/assets/images/收藏.png" alt="" />
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="grxx_yiqi_li">
-            <div class="grxx_yiqi_img">
-              <img class="" src="" alt="" />
-            </div>
-            <div class="grxx_yiqi_xiangqing">
-              <h1 class="grxx_yiqi_h1"><a href="javascript:;">全数字化核磁共振仪</a></h1>
-              <div class="grxx_yiqi_neirong">
-                <dl>
-                  <dd>仪器分类：<span>样品处理</span></dd>
-                  <dd>仪器型号：<span>AVⅢ-400M</span></dd>
-                  <dd>所属系：<span>软件与大数据系</span></dd>
-                  <dd>放置位置：<span>1号教学楼906</span></dd>
-                </dl>
-                <div class="grxx_yiqi_collect">
-                  <img src="@/assets/images/收藏.png" alt="" />
-                </div>
-              </div>
-            </div>
-          </li>
+          <collectList v-for="item in collectList.records" :key="item.id" :collect="item"></collectList>
         </ul>
       </div>
-      <div class="page">
-        <el-pagination background layout="prev, pager, next" :total="100"> </el-pagination>
-      </div>
+      <Page :total="collectList.total" :pageSize="collectList.size" :currentPage="collectList.current" @getPage="getPage"></Page>
     </div>
   </div>
+
 </template>
 
 <script>
-import '@/assets/css/my.css'
+import '@/assets/css/my.less'
+import collectList from './collectList.vue'
+import { mapState } from 'vuex'
 export default {
-  name: 'collect'
+  name: 'collect',
+  components: {
+    collectList
+  },
+  data() {
+    return {
+      collect: {
+        page: 1,
+        pageSize: 6
+      }
+    }
+  },
+  mounted() {
+    this.getCollectList()
+  },
+  methods: {
+    getCollectList() {
+      this.$store.dispatch('getCollecr', this.collect)
+    },
+    getPage(index) {
+      this.collect.page = index
+      this.$router.push({ name: 'collect', query: { page: this.collect.page, pageSize: this.collect.pageSize } })
+      this.getCollectList()
+    }
+  },
+  computed: {
+    ...mapState({
+      collectList: state => state.collect.collectList
+    })
+  }
 }
 </script>
 

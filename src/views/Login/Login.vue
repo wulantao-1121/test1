@@ -4,17 +4,17 @@
       <div class="login_title">登录</div>
       <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="auto" class="demo-ruleForm">
         <el-form-item label="账号" prop="pass">
-          <el-input type="text" v-model="ruleForm.pass" autocomplete="off"></el-input>
+          <el-input type="text" v-model="ruleForm.id" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="checkPass">
-          <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+          <el-input type="password" v-model="ruleForm.password" autocomplete="off"></el-input>
         </el-form-item>
         <div class="zhuce">
-          <a href="javascript:;">注册</a>
+          <a @click="$router.push('/register')">注册</a>
         </div>
         <el-form-item>
-          <el-button type="submit" @click="submitForm('ruleForm')">登录</el-button>
-          <el-button @click="resetForm('ruleForm')">重置</el-button>
+          <el-button type="submit" @click="submitForm(ruleForm)">登录</el-button>
+          <el-button @click="$router.push('/')">退出登录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -22,16 +22,11 @@
 </template>
 
 <script>
-import '@/assets/css/login.css'
+import '@/assets/css/login.less'
 export default {
   name: 'Login',
 
   data() {
-    var checkAge = (rule, value, callback) => {
-      if (!value) {
-        return callback(new Error('年龄不能为空'))
-      }
-    }
     var validatePass = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入账号'))
@@ -51,32 +46,26 @@ export default {
     }
     return {
       ruleForm: {
-        pass: '',
-        checkPass: '',
-        age: ''
+        id: '',
+        password: ''
       },
       rules: {
         pass: [{ validator: validatePass, trigger: 'blur' }],
-        checkPass: [{ validator: validatePass2, trigger: 'blur' }],
-        age: [{ validator: checkAge, trigger: 'blur' }]
+        checkPass: [{ validator: validatePass2, trigger: 'blur' }]
       }
     }
   },
   methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate(valid => {
-        if (valid) {
-          alert('submit!')
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
-    },
-    resetForm(formName) {
-      this.$refs[formName].resetFields()
+    async submitForm(ruleForm) {
+      try {
+        await this.$store.dispatch('getUserLogin', ruleForm)
+        this.$router.push('/')
+      } catch (error) {
+        alert(error.message)
+      }
     }
-  }
+  },
+  mounted() {}
 }
 </script>
 

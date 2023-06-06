@@ -3,18 +3,33 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 // 需要使用插件
 Vue.use(Vuex)
-// state:仓库存储数据的地方
-// 对外暴露store实例
-const state = {}
-// mutations:修改state唯一手段
-const mutations = {}
-// actions:处理actions,可以书写自己的业务逻辑,处理异步
-const actions = {}
-// getters:理解为计算属性,简化仓库数据,组件获取仓库数据更加方便
-const getters = {}
+// 引入仓库
+import login from './user'
+import home from './home'
+import search from './search'
+import yiqi from './yiqi'
+import details from './details'
+import news from './news'
+import notice from './notice'
+import synopsis from './synopsis'
+import guide from './guide'
+import used from './used'
+import collect from './collect'
+import enjoy from './enjoy'
 export default new Vuex.Store({
-  state,
-  mutations,
-  actions,
-  getters
+  // vuex仓库模块开发
+  modules: {
+    login,
+    home,
+    search,
+    yiqi,
+    details,
+    news,
+    notice,
+    synopsis,
+    guide,
+    used,
+    collect,
+    enjoy
+  }
 })

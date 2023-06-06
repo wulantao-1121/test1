@@ -1,0 +1,114 @@
+.yuyue_content {
+  margin: auto;
+  width: 1200px;
+
+
+  position: relative;
+
+
+  .yuyue_xinxi {
+    .yuyue_xinxi_table {
+      border-spacing: 0;
+      padding: 20px 0 20px 0;
+
+      tbody {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+
+        tr {
+          display: block;
+          width: 600px;
+          background-color: #EFEFEF;
+          border-bottom: 1px solid #C6E5EF;
+
+          th {
+            width: 150px;
+            height: 50px;
+
+            font-size: 14px;
+            background-color: #E1F0F5;
+          }
+
+          td {
+            padding: 0 0 0 10px;
+            font-size: 14px;
+          }
+
+        }
+      }
+    }
+
+    .yuyue_state {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      height: 50px;
+      background-color: #EFEFEF;
+
+      h1 {
+        font-size: 24px;
+        font-weight: normal;
+      }
+
+      .state {
+        span {
+          padding: 10px;
+          font-size: 14px;
+          background-color: green;
+        }
+
+        .empty {
+          background-color: #fff;
+        }
+
+        .notfull {
+          color: #fff;
+          background-color: orange;
+        }
+
+        .full {
+          color: #fff;
+          background-color: red;
+        }
+      }
+    }
+
+    .yuyue_data {
+      padding: 30px 0;
+
+      .el-calendar__title {
+        margin: auto;
+        font-size: 20px;
+      }
+
+      .yiqi_yuyue_time {
+        display: flex;
+        justify-content: center;
+
+
+
+        .el-date-editor {
+          width: 80%;
+        }
+      }
+
+      .yiqi_yuyue_box {
+        display: flex;
+        justify-content: center;
+        padding: 40px 0;
+
+        .yiqi_yuyue_time_btn {
+          width: 140px;
+          padding: 10px 0;
+          background-color: #0256FF;
+          border-color: #0256FF;
+          border-radius: 5px;
+          color: #fff;
+        }
+
+      }
+    }
+  }
+}

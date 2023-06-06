@@ -10,11 +10,21 @@ body {
   width: 1200px;
   height: 30px;
 }
-.login_box .login_nav .login_prompt {
-  position: absolute;
-  right: 10px;
-  font-size: 12px;
+.login_box .login_nav .loginandout {
+  display: flex;
+  justify-content: flex-end;
+}
+.login_box .login_nav .loginandout span {
+  display: block;
+  padding: 0 3px;
   line-height: 30px;
+  color: #ccc;
+}
+.login_box .login_nav .loginandout .login_prompt,
+.login_box .login_nav .loginandout .login_out {
+  text-align: center;
+  line-height: 30px;
+  font-size: 13px;
 }
 .header_logo {
   height: 140px;

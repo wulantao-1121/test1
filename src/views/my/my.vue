@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import '@/assets/css/my.css'
+import '@/assets/css/my.less'
 import Left from './left.vue'
 export default {
   name: 'my',

@@ -122,11 +122,8 @@
 .details .yiqi_details_content .yiqi_details .yiqi_details_parameter .yuyue_shoucang .yuyue_btn {
   width: 165px;
   height: 50px;
-  border-color: #0256FF;
   font-size: 18px;
   color: #fff;
-  border-radius: 10px;
-  background-color: #0256FF;
 }
 .details .yiqi_details_content .yiqi_details .yiqi_details_parameter .yuyue_shoucang .collect {
   position: absolute;

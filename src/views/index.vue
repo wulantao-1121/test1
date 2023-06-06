@@ -16,12 +16,9 @@
         <h1>--实时设备--</h1>
         <div class="myscroll">
           <ul>
-            <li><a href="javascript:;">金属3D打印机</a></li>
-            <li><a href="javascript:;">金属3D打印机</a></li>
-            <li><a href="javascript:;">金属3D打印机</a></li>
-            <li><a href="javascript:;">金属3D打印机</a></li>
-            <li><a href="javascript:;">金属3D打印机</a></li>
-            <li><a href="javascript:;">金属3D打印机</a></li>
+            <li v-for="item in homeList.records" :key="item.id">
+              <a href="javascript:;">{{ item.yiqiming }}</a>
+            </li>
           </ul>
         </div>
         <a href="javascript:;" class="more">更多信息>></a>
@@ -34,22 +31,22 @@
         <li>
           <img src="../assets/images/仪器.png" alt="" />
           <div class="title">
-            <h1>300</h1>
-            <h3>共300台仪器</h3>
+            <h1>{{ homezongshu.yiqiZongshu }}</h1>
+            <h3>共{{ homezongshu.yiqiZongshu }}台仪器</h3>
           </div>
         </li>
         <li>
           <img src="../assets/images/开始.png" alt="" />
           <div class="title">
-            <h1>300</h1>
-            <h3>共300台仪器</h3>
+            <h1>{{ homezongshu.zhengzhaiShiyong }}</h1>
+            <h3>共{{ homezongshu.zhengzhaiShiyong }}台正在使用</h3>
           </div>
         </li>
         <li>
           <img src="../assets/images/待机.png" alt="" />
           <div class="title">
-            <h1>300</h1>
-            <h3>共300台仪器</h3>
+            <h1>{{ homezongshu.xianzhi }}</h1>
+            <h3>共{{ homezongshu.xianzhi }}台待机中</h3>
           </div>
         </li>
       </ul>
@@ -61,46 +58,7 @@
         <div class="container_bg"></div>
         <div class="container_list">
           <ul>
-            <li>
-              <div class="data">
-                <span class="sun">17</span>
-                <span class="years">2023-05</span>
-              </div>
-              <div class="content">
-                <a href="javascript:;" class="news_title">资实部召开教育教学改革项目交流会</a>
-                <p class="news_content">2023年4月27日上午，资产与实验室管理部召开教育教学改革研究项目研究提升交流会。资产与实验室管理部副部长吕国凯主持会议。会上，2022年教改项目2位负…</p>
-              </div>
-            </li>
-            <li>
-              <div class="data">
-                <span class="sun">17</span>
-                <span class="years">2023-05</span>
-              </div>
-              <div class="content">
-                <a href="javascript:;" class="news_title">资实部召开教育教学改革项目交流会</a>
-                <p class="news_content">2023年4月27日上午，资产与实验室管理部召开教育教学改革研究项目研究提升交流会。资产与实验室管理部副部长吕国凯主持会议。会上，2022年教改项目2位负…</p>
-              </div>
-            </li>
-            <li>
-              <div class="data">
-                <span class="sun">17</span>
-                <span class="years">2023-05</span>
-              </div>
-              <div class="content">
-                <a href="javascript:;" class="news_title">资实部召开教育教学改革项目交流会</a>
-                <p class="news_content">2023年4月27日上午，资产与实验室管理部召开教育教学改革研究项目研究提升交流会。资产与实验室管理部副部长吕国凯主持会议。会上，2022年教改项目2位负…</p>
-              </div>
-            </li>
-            <li>
-              <div class="data">
-                <span class="sun">17</span>
-                <span class="years">2023-05</span>
-              </div>
-              <div class="content">
-                <a href="javascript:;" class="news_title">资实部召开教育教学改革项目交流会</a>
-                <p class="news_content">2023年4月27日上午，资产与实验室管理部召开教育教学改革研究项目研究提升交流会。资产与实验室管理部副部长吕国凯主持会议。会上，2022年教改项目2位负…</p>
-              </div>
-            </li>
+            <homeNews v-for="(item) in article.records" :key="item.id" :newsList="item"></homeNews>
           </ul>
         </div>
       </div>
@@ -112,66 +70,7 @@
     <div class="notice">
       <div class="notice_header">通知公告</div>
       <ul>
-        <li>
-          <div class="notice_data">
-            <span class="sun">17</span>
-            <span class="years">2023-05</span>
-          </div>
-          <div class="content">
-            <a href="javascript:;" class="notice_title">大型仪器公共技术平台培训预告（2023年第12周）</a>
-            <p class="notice_content">培训一平台名称：生命环境研究公共技术平台培训名称：2023年细胞能量代谢分析系统Seahorse XFe96上机操…</p>
-          </div>
-        </li>
-        <li>
-          <div class="notice_data">
-            <span class="sun">17</span>
-            <span class="years">2023-05</span>
-          </div>
-          <div class="content">
-            <a href="javascript:;" class="notice_title">大型仪器公共技术平台培训预告（2023年第12周）</a>
-            <p class="notice_content">培训一平台名称：生命环境研究公共技术平台培训名称：2023年细胞能量代谢分析系统Seahorse XFe96上机操…</p>
-          </div>
-        </li>
-        <li>
-          <div class="notice_data">
-            <span class="sun">17</span>
-            <span class="years">2023-05</span>
-          </div>
-          <div class="content">
-            <a href="javascript:;" class="notice_title">大型仪器公共技术平台培训预告（2023年第12周）</a>
-            <p class="notice_content">培训一平台名称：生命环境研究公共技术平台培训名称：2023年细胞能量代谢分析系统Seahorse XFe96上机操…</p>
-          </div>
-        </li>
-        <li>
-          <div class="notice_data">
-            <span class="sun">17</span>
-            <span class="years">2023-05</span>
-          </div>
-          <div class="content">
-            <a href="javascript:;" class="notice_title">大型仪器公共技术平台培训预告（2023年第12周）</a>
-            <p class="notice_content">培训一平台名称：生命环境研究公共技术平台培训名称：2023年细胞能量代谢分析系统Seahorse XFe96上机操…</p>
-          </div>
-        </li>
-        <li>
-          <div class="notice_data">
-            <span class="sun">17</span>
-            <span class="years">2023-05</span>
-          </div>
-          <div class="content">
-            <a href="javascript:;" class="notice_title">大型仪器公共技术平台培训预告（2023年第12周）</a>
-            <p class="notice_content">培训一平台名称：生命环境研究公共技术平台培训名称：2023年细胞能量代谢分析系统Seahorse XFe96上机操…</p>
-          </div>
-        </li>
-        <li>
-          <div class="notice_data">
-            <span class="sun">17</span>
-            <span class="years">2023-05</span>
-          </div>
-          <div class="content">
-            <a href="javascript:;" class="notice_title">大型仪器公共技术平台培训预告（2023年第12周）</a>
-            <p class="notice_content">培训一平台名称：生命环境研究公共技术平台培训名称：2023年细胞能量代谢分析系统Seahorse XFe96上机操…</p>
-          </div>
-        </li>
+        <homeNotice v-for="item in notice.records" :key="item.id" :noticeList="item"></homeNotice>
       </ul>
       <div class="notice_more">
         <a href="javascript:;" @click="$router.push('/notice')">浏览更多+</a>
@@ -181,11 +80,70 @@
 </template>
 
 <script>
-import '../assets/css/index.css'
+import homeNews from './Home/homeNews.vue'
+import homeNotice from './Home/homeNotice.vue'
+import '../assets/css/index.less'
+import { mapState, mapGetters } from 'vuex'
 export default {
-  name: 'Index'
+  name: 'Index',
+  components: {
+    homeNews,
+    homeNotice
+  },
+  data() {
+    return {
+      homelist: {
+        page: 1,
+        pageSize: 6,
+        shiYong: 1,
+        order: ''
+      },
+      news: {
+        page: 1,
+        leixing: 1,
+        pageSize: 4
+      },
+      notices: {
+        page: 1,
+        leixing: 2,
+        pageSize: 6
+      }
+    }
+  },
+  mounted() {
+    this.getHomeyiqi()
+    this.getHomeList()
+    this.getHomeNews()
+    this.getHomeNotice()
+  },
+  computed: {
+    ...mapState({
+      homezongshu: state => state.home.homezongshu,
+      homeList: state => state.home.homeList,
+      article: state => state.home.article,
+      notice: state => state.home.notice
+    })
+  },
+  methods: {
+    getHomeyiqi() {
+      this.$store.dispatch('yiqiList', this.homelist)
+    },
+    getHomeList() {
+      this.$store.dispatch('homeList', this.homeList)
+    },
+    getHomeNews() {
+      this.$store.dispatch('article', this.news)
+    },
+    getHomeNotice() {
+      this.$store.dispatch('notice', this.notices)
+    }
+  }
 }
 </script>
 
-<style>
+<style lang="less" scoped>
+.myscroll {
+  height: 210px;
+  overflow: hidden;
+}
 </style>

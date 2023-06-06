@@ -150,6 +150,7 @@
   border-bottom: 1px solid #000;
 }
 .main .news .container .container_list ul li .data {
+  text-align: center;
   height: 100%;
   width: 54px;
 }
@@ -176,6 +177,9 @@
   color: #333;
 }
 .main .news .container .container_list ul li .content .news_content {
+  overflow: hidden;
+  width: 580px;
+  height: 40px;
   font-size: 14px;
   line-height: 20px;
   color: #797979;
@@ -228,11 +232,18 @@
   font-size: 12px;
 }
 .main .notice ul li .notice_title {
+  overflow: hidden;
+  display: block;
+  width: 315px;
+  height: 41px;
   font-weight: normal;
   font-size: 16px;
   color: #333;
 }
 .main .notice ul li .notice_content {
+  overflow: hidden;
+  height: 54px;
+  width: 315px;
   margin-top: 5px;
   font-size: 14px;
   color: #797777;

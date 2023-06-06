@@ -3,11 +3,19 @@
     <!-- 登录 -->
     <div class="login_box">
       <div class="login_nav">
-        <template v-if="false">
-          <a href="javascript:;" class="login_prompt" @click="$router.push('/login')">欢迎您！请登录</a>
+        <!-- !$store.state.login.token -->
+        <template v-if="!$store.state.login.token">
+          <div class="loginandout">
+            <a href="javascript:;" class="login_prompt" @click="$router.push('/login')">欢迎您！请登录</a>
+          </div>
         </template>
-        <template>
-          <a href="javascript:;" class="login_prompt" @click="$router.push('/my/used/yishiyong')">admin</a>
+        <template v-else>
+          <!-- {{ $store.state.login.token }} -->
+          <div class="loginandout">
+            <a href="javascript:;" class="login_prompt" @click="$router.push('/my/used/yishiyong/page')">{{$store.state.login.token}}</a>
+            <span>|</span>
+            <a href="javascript:;" class="login_out" @click="loginOut">退出登录</a>
+          </div>
         </template>
       </div>
     </div>
@@ -25,7 +33,8 @@
             <router-link to="/">首页</router-link>
           </li>
           <li>
-            <router-link to="/yiqi">仪器列表</router-link>
+            <!-- {path:'yiqi/page',query:{page:yiqi.page,pageSize:yiqi.pageSize}} -->
+            <router-link :to="{name:'yiqi',query:{page:yiqi.page,pageSize:yiqi.pageSize}}">仪器列表</router-link>
           </li>
           <li>
             <router-link to="/news">新闻动态</router-link>
@@ -39,12 +48,12 @@
           <li>
             <router-link to="/synopsis">平台简介</router-link>
           </li>
-        </ul>
+        </ul> <!-- @click="$router.push('/search')" -->
         <div class="search">
-          <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
+          <el-form :label-position="labelPosition" label-width="80px" :model="searchFrom">
             <el-form-item>
-              <el-input v-model="formLabelAlign.name"></el-input>
-              <el-button type="primary" @click="$router.push('/search')">搜索</el-button>
+              <el-input v-model="searchFrom.title"></el-input>
+              <el-button type="primary" @click="$router.push(`/search/${searchFrom.title}`)">搜索</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -54,15 +63,33 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'Header',
   data() {
     return {
       labelPosition: 'right',
-      formLabelAlign: {
-        name: '',
-        region: '',
-        type: ''
+      searchFrom: {
+        title: ''
+      },
+      yiqi: {
+        page: 1, //当前页数
+        pageSize: 10, //每页数据个数
+        orders: [],
+        total: '', //返回数据的总个数
+        pages: ''
+      }
+    }
+  },
+  methods: {
+    // 退出登录
+    loginOut() {
+      try {
+        this.$store.dispatch('userLoginOut')
+        // 退出成功到首页
+        this.$router.push('/')
+      } catch (error) {
+        alert(error.message)
       }
     }
   }
