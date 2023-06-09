@@ -13,78 +13,18 @@
           <dd>放置位置：<span>{{ enjoy.yiqididian }}</span></dd>
         </dl>
         <div class="grxx_yiqi_share">
-          <el-button type="primary" class="grxx_yiqi_xiugai" @click="xiugaishow">修改</el-button>
-          <el-button type="danger" class="grxx_yiqi_shanchu"> 删除</el-button>
-          <el-button type="success" class="grxx_yiqi_weixiu">维修</el-button>
-          <el-button type="warning" class="grxx_yiqi_quxiaoweixiu">取消维修</el-button>
+          <el-button type="primary" class="grxx_yiqi_xiugai" @click="updata">修改</el-button>
+          <el-button type="danger" class="grxx_yiqi_shanchu" @click="YiQiDelete"> 删除</el-button>
+          <el-button type="success" v-if="enjoy.yiqizhuangtai==1" class="grxx_yiqi_weixiu" @click="weihu">维修</el-button>
+          <el-button type="warning" v-else class="grxx_yiqi_quxiaoweixiu" @click="quxiaoweihu">取消维修</el-button>
         </div>
       </div>
     </div>
-    <el-dialog title="新增仪器" :visible.sync="dialogFormVisible">
-      <el-form :model="form" ref="form">
-        <el-form-item label="仪器名称" :label-width="formLabelWidth" width="50%">
-          <el-input v-model="form.yiqiming" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="仪器型号" :label-width="formLabelWidth">
-          <el-input v-model="form.yiqixinghao" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="仪器分类" :label-width="formLabelWidth">
-          <el-select v-model="form.yiqifenleiId" placeholder="所在系">
-            <el-option label="分类1" :value=1></el-option>
-            <el-option label="分类2" :value=2></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="负责人" :label-width="formLabelWidth">
-          <el-input v-model="form.fuzeren" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="负责人电话" :label-width="formLabelWidth">
-          <el-input v-model="form.fuzerendianhua" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="联系邮箱" :label-width="formLabelWidth">
-          <el-input v-model="form.lianxiyouxiang" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="所属品牌" :label-width="formLabelWidth">
-          <el-input v-model="form.yiqipinpai" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="放置地点" :label-width="formLabelWidth">
-          <el-input v-model="form.yiqididian" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="所在系" :label-width="formLabelWidth">
-          <el-select v-model="form.xiId" placeholder="所在系">
-            <el-option label="软件与大数据" :value=1></el-option>
-            <el-option label="电子与通信系" :value=2></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="主要功能与特色" class="gongnengtese" prop="desc">
-          <el-input type="textarea" v-model="form.gongnengtese"></el-input>
-        </el-form-item>
-        <el-form-item label="主要附件与配置" class="fujianpeizhi" prop="desc">
-          <el-input type="textarea" v-model="form.fujianpeizhi"></el-input>
-        </el-form-item>
-        <el-form-item label="安全使用注意事项" class="zhuyishixiang" prop="desc">
-          <el-input type="textarea" v-model="form.zhuyishixiang"></el-input>
-        </el-form-item>
-        <el-form-item label="主要规格" class="zhuyishixiang" prop="desc">
-          <el-input type="textarea" v-model="form.guige"></el-input>
-        </el-form-item>
-        <el-upload action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-success="success">
-          <i class="el-icon-plus"></i>
-        </el-upload>
-        <el-dialog :visible.sync="dialogVisible">
-          <img width="100%" :src="dialogImageUrl" alt="">
-        </el-dialog>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取消</el-button>
-        <el-button type="primary">确 定</el-button>
-      </div>
-    </el-dialog>
   </li>
 </template>
 
 <script>
 import '@/assets/css/my.less'
-import { mapState } from 'vuex'
 export default {
   name: 'enjoyList',
   props: ['enjoy'],
@@ -93,47 +33,56 @@ export default {
       dialogImageUrl: '',
       dialogVisible: false,
       dialogFormVisible: false,
-      formLabelWidth: '120px'
-      // form: {
-      //   yiqiming: '1231', //仪器名
-      //   xiId: '', //系
-      //   yiqixinghao: '', //仪器型号
-      //   fuzeren: '', //负责人
-      //   gongnengtese: '', //功能特色
-      //   fujianpeizhi: '', //附件
-      //   zhuyishixiang: '', //注意事项
-      //   yiqitupian: 'E:\\1667538806115.jpg', //仪器图片
-      //   yiqifenleiId: '', //仪器分类
-      //   guige: '', //规格
-      //   yiqididian: '', //仪器地点
-      //   yiqipinpai: '', //仪器品牌
-      //   lianxiyouxiang: '', //联系电话
-      //   fuzeren: '', //负责人
-      //   fuzerendianhua: '', //负责人电话
-      //   lianxiyouxiang: ''
-      // }
+      formLabelWidth: '120px',
+      delete: {
+        ids: ''
+      },
+      maintenance: {
+        id: '',
+        yiqizhuangtai: 0
+      }
     }
   },
-  computed: {
-    ...mapState({
-      form: state => state.enjoy.form
-    })
-  },
+  mounted() {},
   methods: {
-    // 修改仪器
-    xiugaishow() {
-      this.dialogFormVisible = true
-      this.$store.dispatch('HuiXian', this.enjoy.id)
+    updata() {
+      this.$bus.$emit('add', 1)
+      this.$bus.$emit('id', this.enjoy.id)
     },
-
-    handleRemove(file, fileList) {
-      console.log(file, fileList)
+    // 删除仪器
+    async YiQiDelete() {
+      try {
+        this.delete.ids = this.enjoy.id
+        console.log(this.delete)
+        await this.$store.dispatch('YiQiDelete', this.delete)
+        alert('删除成功')
+        this.$bus.$emit('delete', 0)
+      } catch (error) {
+        alert(error.message)
+      }
     },
-    handlePictureCardPreview(file) {
-      console.log(file.url)
+    // 维修
+    async weihu() {
+      try {
+        this.maintenance.id = this.enjoy.id
+        await this.$store.dispatch('maintenance', this.maintenance)
+        alert('维修成功')
+        this.$bus.$emit('delete', 0)
+      } catch (error) {
+        alert('维修失败')
+      }
     },
-    success(response, file, fileList) {
-      this.form.yiqitupian = file.url
+    // 取消维修
+    async quxiaoweihu() {
+      try {
+        this.maintenance.id = this.enjoy.id
+        this.maintenance.yiqizhuangtai = 1
+        await this.$store.dispatch('EndRepair', this.maintenance)
+        alert('取消维修成功')
+        this.$bus.$emit('delete', 0)
+      } catch (error) {
+        alert('取消维修失败')
+      }
     }
   }
 }

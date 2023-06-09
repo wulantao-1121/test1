@@ -25,8 +25,10 @@
 .my_content .grxx_box .left_sidebar .grxx_img img {
   width: 80px;
   height: 80px;
-  background-color: green;
   border-radius: 30px;
+}
+.my_content .grxx_box .left_sidebar .grxx_img h1 {
+  color: #fff;
 }
 .my_content .grxx_box .left_sidebar .grxx_img .grxx_name {
   font-weight: normal;
@@ -171,10 +173,8 @@
 }
 .my_content .grxx_box .right_sidebar div .grxx_yiqi_list .grxx_yiqi_ul .grxx_yiqi_li .grxx_yiqi_xiangqing .grxx_yiqi_neirong .grxx_yiqi_share {
   display: flex;
-  flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
-  width: 20%;
 }
 .my_content .grxx_box .right_sidebar div .grxx_yiqi_list .grxx_yiqi_ul .grxx_yiqi_li .grxx_yiqi_xiangqing .grxx_yiqi_neirong .grxx_yiqi_share .grxx_yiqi_xiugai,
 .my_content .grxx_box .right_sidebar div .grxx_yiqi_list .grxx_yiqi_ul .grxx_yiqi_li .grxx_yiqi_xiangqing .grxx_yiqi_neirong .grxx_yiqi_share .grxx_yiqi_shanchu,
@@ -183,7 +183,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70px;
+  width: 60px;
   height: 30px;
   font-size: 12px;
   color: #fff;

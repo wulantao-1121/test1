@@ -39,7 +39,8 @@
             <dd>
               放置位置: <span>{{ yiqiDto.yiqididian }}</span>
             </dd>
-            <dd>运行状态: <span class="gongxaing">可共享</span></dd>
+            <dd v-if="yiqiDto.yiqizhuangtai==1">运行状态: <span class="gongxaing">可共享</span></dd>
+            <dd v-else>运行状态: <span class="weixiu">维修中</span></dd>
             <dd>
               负责人: <span>{{ yiqiDto.fuzeren }}{{ yiqiDto.fuzerendianhua }}</span>
             </dd>
@@ -47,8 +48,15 @@
             <dd v-else>使用状态: <span class="shiyong">使用中</span></dd>
           </dl>
           <div class="yuyue_shoucang">
-            <el-button type="primary" class="yuyue_btn" @click="$router.push('/yiqi/reservation')">立即预约</el-button>
-            <a href="javascript:;" class="collect">
+            <el-button type="primary" v-if="yiqiDto.yiqizhuangtai==1" class="yuyue_btn" @click="$router.push('/yiqi/reservation')">立即预约</el-button>
+            <el-button type="primary" disabled v-else class="yuyue_btn">立即预约</el-button>
+            <a href="javascript:;" class="collect" @click="quxiaoCollect" v-if="viewcollect==1">
+              <span class="collect_img">
+                <img src="@/assets/images/加星收藏_填充.png" alt="" />
+              </span>
+              <span class="collect_text">收藏</span>
+            </a>
+            <a href="javascript:;" class="collect" @click="btnCollect" v-if="viewcollect==0">
               <span class="collect_img">
                 <img src="@/assets/images/收藏.png" alt="" />
               </span>
@@ -113,19 +121,50 @@ export default {
       page: {
         page: '',
         pageSize: ''
+      },
+      collect: {
+        yiqiId: ''
+      },
+      view: {
+        whether: 0
+      },
+      quxiao: {
+        ids: ''
       }
     }
   },
   created() {
     this.$store.dispatch('details', this.$route.params.id)
+    this.collect.yiqiId = parseInt(this.$route.params.id)
+    this.$store.dispatch('viewCollect', this.collect)
   },
   computed: {
-    ...mapGetters(['details', 'yiqiDto'])
+    ...mapGetters(['details', 'yiqiDto']),
+    ...mapState({
+      viewcollect: state => state.details.viewcollect
+    })
   },
-  mounted() {},
+  mounted() {
+    // this.viewCollect()
+  },
   methods: {
     $cleanup() {
       this.$store.commit('clearData')
+    },
+    // 收藏
+    btnCollect() {
+      this.collect.yiqiId = parseInt(this.$route.params.id)
+      this.$store.dispatch('Collect', this.collect)
+      this.viewCollect()
+    },
+    // 查看收藏
+    viewCollect() {
+      this.$store.dispatch('viewCollect', this.collect)
+    },
+    quxiaoCollect() {
+      this.quxiao.ids = this.$route.params.id
+      this.$store.dispatch('deleteCollect', this.quxiao)
+      this.viewCollect()
     }
   },
   beforeDestroy() {

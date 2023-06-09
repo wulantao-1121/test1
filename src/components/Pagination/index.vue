@@ -9,11 +9,15 @@
 export default {
   name: 'Page',
   props: ['total', 'pageSize', 'currentPage'],
+  data() {
+    return {}
+  },
   methods: {
     getPage(index) {
       this.$emit('getPage', index)
     }
-  }
+  },
+  mounted() {}
 }
 </script>
 

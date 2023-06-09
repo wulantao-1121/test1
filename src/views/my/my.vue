@@ -13,8 +13,8 @@
       <div class="grxx_box">
         <div class="left_sidebar">
           <div class="grxx_img">
-            <img src="" alt="" />
-            <h1 class="grxx_name">王老师</h1>
+            <img src="@/assets/images/admin.png" alt="" />
+            <h1 class="grxx_name">{{$store.state.login.token}}</h1>
           </div>
           <Left></Left>
         </div>
@@ -31,6 +31,9 @@ export default {
   name: 'my',
   components: {
     Left
+  },
+  data() {
+    return {}
   }
 }
 </script>

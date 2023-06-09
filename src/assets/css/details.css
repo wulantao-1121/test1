@@ -99,7 +99,8 @@
   font-size: 16px;
 }
 .details .yiqi_details_content .yiqi_details .yiqi_details_parameter dl dd .gongxaing,
-.details .yiqi_details_content .yiqi_details .yiqi_details_parameter dl dd .shiyong {
+.details .yiqi_details_content .yiqi_details .yiqi_details_parameter dl dd .shiyong,
+.details .yiqi_details_content .yiqi_details .yiqi_details_parameter dl dd .weixiu {
   display: flex;
   padding: 5px 3px;
   font-size: 14px;
@@ -107,6 +108,10 @@
 .details .yiqi_details_content .yiqi_details .yiqi_details_parameter dl dd .gongxaing {
   color: #11EE2F;
   border: 2px solid #11EE2F;
+}
+.details .yiqi_details_content .yiqi_details .yiqi_details_parameter dl dd .weixiu {
+  color: #e6a23c;
+  border: 2px solid #e6a23c;
 }
 .details .yiqi_details_content .yiqi_details .yiqi_details_parameter dl dd .shiyong {
   color: #F75757;
@@ -129,6 +134,9 @@
   position: absolute;
   left: 50%;
   display: flex;
+}
+.details .yiqi_details_content .yiqi_details .yiqi_details_parameter .yuyue_shoucang .collect .collect_img {
+  padding: 0px 5px;
 }
 .details .yiqi_details_content .yiqi_details .yiqi_details_parameter .yuyue_shoucang .collect .collect_img img {
   width: 20px;

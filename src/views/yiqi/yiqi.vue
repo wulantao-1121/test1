@@ -9,7 +9,7 @@
       </el-breadcrumb>
     </div>
     <!-- 仪器搜索 -->
-    <Yiqisearch :yiqixi="yiqiXi"></Yiqisearch>
+    <Yiqisearch :yiqixi="yiqiXi" :yiqifenlei="yiqiFenLei" @sousuo="sousuo"></Yiqisearch>
     <!-- 仪器列表 -->
     <div class="yiqi_list">
       <ul class="yiqi_ul">
@@ -31,8 +31,6 @@ import Yiqisearch from './yiqisearch.vue'
 import YiqiList from './yiqiList.vue'
 import YiqiHot from './yiqiHot.vue'
 import { mapState } from 'vuex'
-import router from '@/router'
-import { yiqiSearch } from '@/api'
 export default {
   name: 'Yiqi',
   components: {
@@ -48,25 +46,26 @@ export default {
         orders: [],
         total: '', //返回数据的总个数
         pages: '',
+        xiId: '',
+        yiqifenleiId: '',
+        isUser: '111',
         host: '11'
-      },
-      yiqiPage: {
-        page: '',
-        pageSize: ''
       }
     }
   },
 
   mounted() {
-    this.yiqi.page = this.$route.query.page
-    this.yiqi.pageSize = this.$route.query.pageSize
+    this.yiqi.page = this.$route.query.page || 1
+    this.yiqi.pageSize = this.$route.query.pageSize || 10
     this.getyiqidata()
     this.getyiqiXi()
+    this.getYiQiFenlei()
   },
   computed: {
     ...mapState({
       yiqiList: state => state.yiqi.yiqiList,
-      yiqiXi: state => state.yiqi.yiqiXi
+      yiqiXi: state => state.yiqi.yiqiXi,
+      yiqiFenLei: state => state.yiqi.yiqiFenLei
     })
   },
   methods: {
@@ -76,11 +75,18 @@ export default {
     },
     getPage(index) {
       this.yiqi.page = index
-      this.$router.push({ name: 'yiqi', query: { page: this.yiqi.page, pageSize: this.yiqi.pageSize } })
+      this.$router.push({ name: 'yiqi', query: { page: this.yiqi.page, pageSize: this.yiqi.pageSize, xiId: this.yiqi.xiId, yiqifenleiId: this.yiqi.yiqifenleiId } })
       this.getyiqidata()
     },
     getyiqiXi() {
       this.$store.dispatch('yiqiXi')
+    },
+    getYiQiFenlei() {
+      this.$store.dispatch('yiqiFenlei')
+    },
+    sousuo(value) {
+      this.yiqi.xiId = value.xiId
+      this.yiqi.yiqifenleiId = value.yiqifenleiId
     }
   }
 }
