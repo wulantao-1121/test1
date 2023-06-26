@@ -9,8 +9,8 @@ const mutations = {
   }
 }
 const actions = {
-  async getGuide({ commit }) {
-    let res = await getGuide()
+  async getGuide({ commit }, params) {
+    let res = await getGuide(params)
     if (res.code == 1) {
       commit('GUIDE', res.data)
     }

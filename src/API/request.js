@@ -11,9 +11,10 @@ const requests = axios.create({
 // 请求拦截器
 requests.interceptors.request.use(config => {
   //
-  // if (store.state.login.token) {
-  //   config.headers.token = store.state.login.token
-  // }
+  if (store.state.login.token) {
+    config.headers.token = store.state.login.token
+    console.log(config.headers.token)
+  }
   return config
 })
 
@@ -28,6 +29,5 @@ requests.interceptors.response.use(
     return Promise.reject(new Error('faile'))
   }
 )
-
 // 对外暴露
 export default requests

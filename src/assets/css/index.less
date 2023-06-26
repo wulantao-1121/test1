@@ -22,14 +22,17 @@
     margin: auto;
     width: 1050px;
     height: 350px;
-    background-color: red;
 
     .left,
-    .center,
     .right {
       padding: 30px 30px;
       width: 290px;
       height: 290px;
+    }
+
+    .center {
+      width: 350px;
+      height: 350px;
     }
 
     .left {
@@ -69,11 +72,12 @@
       video {
         width: 100%;
         height: 100%;
+        object-fit: fill;
       }
     }
 
     .right {
-      background-color: red;
+      background-color: #08a89e;
 
       h1 {
         text-align: center;
@@ -95,16 +99,9 @@
         }
       }
 
-      .more,
+
       .yyxt {
         display: block;
-      }
-
-      .more {
-        display: flex;
-        justify-content: flex-end;
-        font-size: 12px;
-        color: #fff;
       }
 
       .yyxt {
@@ -174,7 +171,11 @@
       .container_bg {
         width: 540px;
         height: 440px;
-        background-color: blue;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
 
       .container_list {
@@ -220,10 +221,16 @@
                 line-height: 35px;
                 font-size: 16px;
                 color: #333;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
               }
 
               .news_content {
                 overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
                 width: 580px;
                 height: 40px;
                 font-size: 14px;
@@ -294,6 +301,8 @@
 
         .notice_title {
           overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
           display: block;
           width: 315px;
           height: 41px;
@@ -304,6 +313,9 @@
 
         .notice_content {
           overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
           height: 54px;
           width: 315px;
           margin-top: 5px;

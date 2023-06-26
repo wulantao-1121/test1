@@ -5,7 +5,7 @@
         <NotusedList v-for="item in weishiyongList.records" :key="item.id" :weishiyong="item"></NotusedList>
       </ul>
     </div>
-    <Page :total="weishiyongList.total" :pageSize="weishiyongList.size" :currentPage="weishiyongList.current" @getPage="getPage"></Page>
+    <Page :total="weishiyongList.total" :pageSize="weishiyongList.size" :currentPage="parseInt($route.query.page)" @getPage="getPage"></Page>
   </div>
 </template>
 
@@ -30,18 +30,35 @@ export default {
       }
     }
   },
+  beforeCreate() {
+    this.$bus.$off('again')
+  },
   mounted() {
+    this.weishiyong.page = this.$route.query.page || 1
+    this.weishiyong.pageSize = this.$route.query.pageSize || 6
     this.getweishiyong()
+    this.$bus.$on('again', value => {
+      if (value) {
+        this.getweishiyong()
+        console.log(this.$store.state.used.weishiyongList.records.length)
+        if (this.$store.state.used.weishiyongList.records.length - 1 === 0) {
+          this.weishiyong.page = this.$route.query.page - 1
+          this.$router.push({ name: 'weishiyong', query: { page: this.weishiyong.page, pageSize: this.weishiyong.pageSize, shiYong: this.weishiyong.shiYong, order: this.weishiyong.order } })
+          this.$store.dispatch('weishiyong', this.weishiyong)
+        }
+      }
+    })
   },
   methods: {
     getweishiyong() {
       this.$store.dispatch('weishiyong', this.weishiyong)
     },
     getPage(index) {
-      this.yishiyong.page = index
-      this.$router.push({ name: 'yishiyong', query: { page: this.yishiyong.page, pageSize: this.yishiyong.pageSize, shiYong: this.yishiyong.shiYong, order: this.yishiyong.order } })
+      this.weishiyong.page = index
+      this.$router.push({ name: 'weishiyong', query: { page: this.weishiyong.page, pageSize: this.weishiyong.pageSize, shiYong: this.weishiyong.shiYong, order: this.weishiyong.order } })
       this.getweishiyong()
-    }
+    },
+    againRequest() {}
   },
   computed: {
     ...mapState({

@@ -1,4 +1,4 @@
-import { getEnjoy, addYiqi, xiugaoYiqi, HuiXian, reqImages, yiqiXi, yiqiFenlei, Delete } from '@/api/index'
+import { getEnjoy, addYiqi, xiugaoYiqi, HuiXian, yiqiXi, yiqiFenlei, Delete, getImages } from '@/api/index'
 
 const state = {
   enjoyList: [],
@@ -52,11 +52,6 @@ const actions = {
       commit('HUIXIAN', res.data)
     }
   },
-  // 照片
-  async reqImages({ commit }, params) {
-    let res = await reqImages(params)
-    console.log('照片', res)
-  },
   // 系
   async yiqiXi({ commit }) {
     let res = await yiqiXi()
@@ -73,7 +68,6 @@ const actions = {
   },
   // 删除仪器
   async YiQiDelete({ commit }, params) {
-    console.log(params)
     let res = await Delete(params)
     if (res.code == 1) {
       return 'ok'
@@ -98,6 +92,10 @@ const actions = {
     } else {
       return Promise.reject(new Error(res.data))
     }
+  },
+  // 照片回显
+  async getImages({ commit }, data) {
+    let res = await getImages(data)
   }
 }
 const getters = {}

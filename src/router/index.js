@@ -17,7 +17,7 @@ const router = new VueRouter({
       component: () => import('../views/register/register.vue')
     },
     {
-      name: '',
+      name: 'home',
       path: '/',
       component: () => import('../views/Home.vue'),
       children: [
@@ -26,10 +26,7 @@ const router = new VueRouter({
           path: '/',
           component: () => import('../views/index.vue')
         },
-        {
-          path: '/home',
-          redirect: '/'
-        },
+
         {
           name: 'search',
           path: 'search/:title',
@@ -108,13 +105,28 @@ const router = new VueRouter({
               component: () => import('../views/Enjoy/enjoy.vue')
             }
           ]
+        },
+        {
+          name: 'newsDateils',
+          path: '/newsDateils',
+          component: () => import('@/views/newsDetails')
+        },
+        {
+          name: 'noticeDateils',
+          path: '/noticeDateils',
+          component: () => import('@/views/NoticeDateils/index.vue')
+        },
+        {
+          name: 'gudieDateils',
+          path: '/gudieDateils',
+          component: () => import('@/views/gudieDateils/index.vue')
         }
       ]
-    },
-    {
-      path: '/home',
-      redirect: '/'
     }
+    // {
+    //   path: '/home',
+    //   redirect: '/'
+    // }
   ],
   scrollBehavior(to, from, savedPosition) {
     // 始终滚动到顶部
@@ -133,6 +145,7 @@ router.beforeEach((to, from, next) => {
       next()
     }
   } else {
+    // to.path == '/my' || to.path == '/my/used' || to.path == '/my/used/yishiyong' || to.path == '/my/used/weishiyong'
     if (to.path == '/my' || to.path == '/my/used' || to.path == '/my/used/yishiyong' || to.path == '/my/used/weishiyong') {
       next('/login')
     } else {

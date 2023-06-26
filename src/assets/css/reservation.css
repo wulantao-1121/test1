@@ -1,0 +1,85 @@
+.yuyue_content {
+  margin: auto;
+  width: 1200px;
+  position: relative;
+}
+.yuyue_content .yuyue_xinxi .yuyue_xinxi_table {
+  border-spacing: 0;
+  padding: 20px 0 20px 0;
+}
+.yuyue_content .yuyue_xinxi .yuyue_xinxi_table tbody {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+.yuyue_content .yuyue_xinxi .yuyue_xinxi_table tbody tr {
+  display: block;
+  width: 600px;
+  background-color: #EFEFEF;
+  border-bottom: 1px solid #C6E5EF;
+}
+.yuyue_content .yuyue_xinxi .yuyue_xinxi_table tbody tr th {
+  width: 150px;
+  height: 50px;
+  font-size: 14px;
+  background-color: #E1F0F5;
+}
+.yuyue_content .yuyue_xinxi .yuyue_xinxi_table tbody tr td {
+  padding: 0 0 0 10px;
+  font-size: 14px;
+}
+.yuyue_content .yuyue_xinxi .yuyue_state {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  height: 50px;
+  background-color: #EFEFEF;
+}
+.yuyue_content .yuyue_xinxi .yuyue_state h1 {
+  font-size: 24px;
+  font-weight: normal;
+}
+.yuyue_content .yuyue_xinxi .yuyue_state .state span {
+  padding: 10px;
+  font-size: 14px;
+  background-color: green;
+}
+.yuyue_content .yuyue_xinxi .yuyue_state .state .empty {
+  background-color: #fff;
+}
+.yuyue_content .yuyue_xinxi .yuyue_state .state .notfull {
+  color: #000;
+  background-color: #fafb64;
+}
+.yuyue_content .yuyue_xinxi .yuyue_state .state .full {
+  color: #fff;
+  background-color: #fa3c00;
+}
+.yuyue_content .yuyue_xinxi .yuyue_data {
+  padding: 30px 0;
+}
+.yuyue_content .yuyue_xinxi .yuyue_data .el-calendar__title {
+  margin: auto;
+  font-size: 20px;
+}
+.yuyue_content .yuyue_xinxi .yuyue_data .yiqi_yuyue_time {
+  display: flex;
+  justify-content: center;
+}
+.yuyue_content .yuyue_xinxi .yuyue_data .yiqi_yuyue_time .el-date-editor {
+  width: 80%;
+}
+.yuyue_content .yuyue_xinxi .yuyue_data .yiqi_yuyue_box {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+.yuyue_content .yuyue_xinxi .yuyue_data .yiqi_yuyue_box .yiqi_yuyue_time_btn {
+  width: 140px;
+  padding: 10px 0;
+  background-color: #0256FF;
+  border-color: #0256FF;
+  border-radius: 5px;
+  color: #fff;
+}

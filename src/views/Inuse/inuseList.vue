@@ -1,7 +1,10 @@
 <template>
   <li class="grxx_yiqi_li">
-    <div class="grxx_yiqi_img">
-      <img class="" src="" alt="" />
+    <div class="grxx_yiqi_img" v-if="shiyongzhong.yiqiDto.yiqitupian!==''">
+      <img :src="this.img" alt="" />
+    </div>
+    <div class="grxx_yiqi_img" v-else>
+      <img src="" alt="" />
     </div>
     <div class="grxx_yiqi_xiangqing">
       <h1 class="grxx_yiqi_h1"><a href="javascript:;">{{ shiyongzhong.yiqiDto.yiqiming }}</a></h1>
@@ -21,7 +24,15 @@
 <script>
 export default {
   name: 'inuseList',
-  props: ['shiyongzhong']
+  props: ['shiyongzhong'],
+  data() {
+    return {
+      img: ''
+    }
+  },
+  created() {
+    this.img = 'http://localhost:8080/common/download?name=' + this.shiyongzhong.yiqiDto.yiqitupian
+  }
 }
 </script>
 

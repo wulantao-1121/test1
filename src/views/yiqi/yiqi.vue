@@ -16,11 +16,12 @@
         <YiqiList v-for="item in yiqiList.records" :key="item.id" :list="item"></YiqiList>
       </ul>
       <!-- 热门仪器 -->
-      <YiqiHot :hostList="yiqiList.records"></YiqiHot>
+      <YiqiHot :hostList="yiqihot"></YiqiHot>
       <!-- current-page 当前页   -->
       <!-- page-count 总页数 -->
       <!-- page-size 每页显示的个数 -->
-      <Page :total="yiqiList.total" :pageSize="yiqiList.size" :currentPage="yiqiList.current" @getPage="getPage"></Page>
+      {{ parseInt($route.query.page) }}
+      <Page :total="yiqiList.total" :pageSize="yiqiList.size" :currentPage="parseInt($route.query.page)" @getPage="getPage"></Page>
     </div>
   </div>
 </template>
@@ -48,16 +49,20 @@ export default {
         pages: '',
         xiId: '',
         yiqifenleiId: '',
-        isUser: '111',
         host: '11'
+      },
+      yiqiHot: {
+        page: 1,
+        pageSize: 5,
+        host: 'yiqihot'
       }
     }
   },
-
   mounted() {
     this.yiqi.page = this.$route.query.page || 1
     this.yiqi.pageSize = this.$route.query.pageSize || 10
     this.getyiqidata()
+    this.getyiqiHot()
     this.getyiqiXi()
     this.getYiQiFenlei()
   },
@@ -65,7 +70,8 @@ export default {
     ...mapState({
       yiqiList: state => state.yiqi.yiqiList,
       yiqiXi: state => state.yiqi.yiqiXi,
-      yiqiFenLei: state => state.yiqi.yiqiFenLei
+      yiqiFenLei: state => state.yiqi.yiqiFenLei,
+      yiqihot: state => state.yiqi.yiqiHot
     })
   },
   methods: {
@@ -74,9 +80,14 @@ export default {
       this.$store.dispatch('yiqiList', this.yiqi)
     },
     getPage(index) {
+      this.$cleanup()
       this.yiqi.page = index
       this.$router.push({ name: 'yiqi', query: { page: this.yiqi.page, pageSize: this.yiqi.pageSize, xiId: this.yiqi.xiId, yiqifenleiId: this.yiqi.yiqifenleiId } })
       this.getyiqidata()
+      sessionStorage.setItem('yiqiPage', index)
+    },
+    getyiqiHot() {
+      this.$store.dispatch('getyiqiHot', this.yiqiHot)
     },
     getyiqiXi() {
       this.$store.dispatch('yiqiXi')
@@ -87,8 +98,13 @@ export default {
     sousuo(value) {
       this.yiqi.xiId = value.xiId
       this.yiqi.yiqifenleiId = value.yiqifenleiId
+    },
+    // 切换时请空数据
+    $cleanup() {
+      this.$store.commit('clearData')
     }
-  }
+  },
+  beforeDestroy() {}
 }
 </script>
 

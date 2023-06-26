@@ -12,14 +12,16 @@
   margin: auto;
   width: 1050px;
   height: 350px;
-  background-color: red;
 }
 .main .main_box .left,
-.main .main_box .center,
 .main .main_box .right {
   padding: 30px 30px;
   width: 290px;
   height: 290px;
+}
+.main .main_box .center {
+  width: 350px;
+  height: 350px;
 }
 .main .main_box .left {
   background-color: blue;
@@ -53,9 +55,10 @@
 .main .main_box .center video {
   width: 100%;
   height: 100%;
+  object-fit: fill;
 }
 .main .main_box .right {
-  background-color: red;
+  background-color: #08a89e;
 }
 .main .main_box .right h1 {
   text-align: center;
@@ -70,15 +73,8 @@
   color: #fff;
   line-height: 35px;
 }
-.main .main_box .right .more,
 .main .main_box .right .yyxt {
   display: block;
-}
-.main .main_box .right .more {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 12px;
-  color: #fff;
 }
 .main .main_box .right .yyxt {
   margin: 12px auto;
@@ -136,7 +132,10 @@
 .main .news .container .container_bg {
   width: 540px;
   height: 440px;
-  background-color: blue;
+}
+.main .news .container .container_bg img {
+  width: 100%;
+  height: 100%;
 }
 .main .news .container .container_list {
   width: 650px;
@@ -175,9 +174,15 @@
   line-height: 35px;
   font-size: 16px;
   color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .main .news .container .container_list ul li .content .news_content {
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   width: 580px;
   height: 40px;
   font-size: 14px;
@@ -233,6 +238,8 @@
 }
 .main .notice ul li .notice_title {
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   display: block;
   width: 315px;
   height: 41px;
@@ -242,6 +249,9 @@
 }
 .main .notice ul li .notice_content {
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
   height: 54px;
   width: 315px;
   margin-top: 5px;

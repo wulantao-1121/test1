@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Page from '@/components/Pagination'
-import { DatePicker, Breadcrumb, BreadcrumbItem, Form, Select, Option, Input, Button, Pagination, FormItem, Calendar, Dialog, Upload } from 'element-ui'
+import { DatePicker, Breadcrumb, BreadcrumbItem, Form, Select, Option, Input, Button, Pagination, FormItem, Calendar, Dialog, Upload, Message } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.component(DatePicker.name, DatePicker)
 Vue.component(Breadcrumb.name, Breadcrumb)
@@ -25,6 +25,7 @@ new Vue({
   // 全局事件总线$bus配置
   beforeCreate() {
     Vue.prototype.$bus = this
+    Vue.prototype.$message = Message
   },
   store,
   router

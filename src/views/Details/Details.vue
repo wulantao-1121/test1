@@ -5,8 +5,7 @@
     <div id="crumbs">
       <el-breadcrumb separator>
         <el-breadcrumb-item><router-link to="/">首页</router-link></el-breadcrumb-item>
-        <!-- "{name:' yiqi',query:{page:yiqi.page,pageSize:yiqi.pageSize}}" -->
-        <el-breadcrumb-item><router-link to="/yiqi/page?page=2&pageSize=10">仪器列表</router-link></el-breadcrumb-item>
+        <el-breadcrumb-item><a @click="$router.push(`/yiqi/page?&page=${yiqiPage}`)">仪器列表</a></el-breadcrumb-item>
         <el-breadcrumb-item><a href="javascript:;">仪器详情</a></el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -48,7 +47,7 @@
             <dd v-else>使用状态: <span class="shiyong">使用中</span></dd>
           </dl>
           <div class="yuyue_shoucang">
-            <el-button type="primary" v-if="yiqiDto.yiqizhuangtai==1" class="yuyue_btn" @click="$router.push('/yiqi/reservation')">立即预约</el-button>
+            <el-button type="primary" v-if="yiqiDto.yiqizhuangtai==1" class="yuyue_btn" @click="yuyue">立即预约</el-button>
             <el-button type="primary" disabled v-else class="yuyue_btn">立即预约</el-button>
             <a href="javascript:;" class="collect" @click="quxiaoCollect" v-if="viewcollect==1">
               <span class="collect_img">
@@ -116,6 +115,7 @@ import '@/assets/css/details.less'
 import { mapGetters, mapState } from 'vuex'
 export default {
   name: 'Details',
+
   data() {
     return {
       page: {
@@ -130,13 +130,18 @@ export default {
       },
       quxiao: {
         ids: ''
-      }
+      },
+      formPage: {
+        page: ''
+      },
+      yiqiPage: ''
     }
   },
   created() {
     this.$store.dispatch('details', this.$route.params.id)
     this.collect.yiqiId = parseInt(this.$route.params.id)
     this.$store.dispatch('viewCollect', this.collect)
+    this.yiqiPage = sessionStorage.getItem('yiqiPage')
   },
   computed: {
     ...mapGetters(['details', 'yiqiDto']),
@@ -144,10 +149,12 @@ export default {
       viewcollect: state => state.details.viewcollect
     })
   },
-  mounted() {
-    // this.viewCollect()
-  },
+  mounted() {},
   methods: {
+    yuyue() {
+      localStorage.setItem('yuyue', this.$route.params.id)
+      this.$router.push('/yiqi/reservation')
+    },
     $cleanup() {
       this.$store.commit('clearData')
     },

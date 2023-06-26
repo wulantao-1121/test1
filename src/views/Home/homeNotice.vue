@@ -7,7 +7,7 @@
     </div>
     <div class="content">
       <a href="javascript:;" class="notice_title">{{ noticeList.biaoti }}</a>
-      <p class="notice_content">{{ noticeList.neirong }}</p>
+      <p class="notice_content">{{ noticeList.neirong.replace(/<[^>]*>/g, '') }}</p>
     </div>
   </li>
 </template>

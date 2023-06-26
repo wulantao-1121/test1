@@ -60,7 +60,10 @@ export default {
     enjoyList,
     dialogShow
   },
-
+  beforeCreate() {
+    this.$bus.$off('delete')
+  },
+  created() {},
   mounted() {
     this.enjoy.page = this.$route.query.page || 1
     this.enjoy.pageSize = this.$route.query.pageSize || 6
@@ -68,6 +71,11 @@ export default {
     this.$bus.$on('delete', value => {
       if (value === 0) {
         this.getEnjoyData()
+        if (this.$store.state.enjoy.enjoyList.records.length - 1 === 0) {
+          this.enjoy.page = this.$route.query.page - 1
+          this.$router.push({ name: 'enjoy', query: { page: this.enjoy.page, pageSize: this.enjoy.pageSize } })
+          this.$store.dispatch('getEnjoy', this.enjoy)
+        }
       }
     })
   },
@@ -84,7 +92,6 @@ export default {
       this.$bus.$emit('add', 0)
     }
   },
-
   computed: {
     ...mapState({
       enjoyList: state => state.enjoy.enjoyList

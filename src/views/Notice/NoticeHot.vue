@@ -1,6 +1,6 @@
 <template>
   <li>
-    <a href="javascript:;">{{ noticeHot.biaoti }}</a>
+    <a @click="$router.push(`/noticeDateils?notice=${noticeHot.id}`)">{{ noticeHot.biaoti }}</a>
   </li>
 </template>
 

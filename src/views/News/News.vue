@@ -73,6 +73,8 @@ export default {
     }
   },
   mounted() {
+    this.newsitem.page = this.$route.query.page || 1
+    this.newsitem.pageSize = this.$route.query.pageSize || 10
     this.getNews()
     this.getHotList()
   }

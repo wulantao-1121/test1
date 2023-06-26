@@ -1,6 +1,6 @@
 <template>
   <li>
-    <a href="javascript:;">{{ newsList.biaoti }}</a>
+    <a @click="$router.push(`/newsDateils?wenzhang=${newsList.id}`)">{{ newsList.biaoti }}</a>
   </li>
 </template>
 

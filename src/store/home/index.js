@@ -1,10 +1,11 @@
 //home 仓库
-import { yiqizongshu, yiqiList, article } from '@/api/index'
+import { yiqizongshu, yiqiList, article, getVideo } from '@/api/index'
 const state = {
   homezongshu: [],
   homeList: [],
   article: {},
-  notice: {}
+  notice: {},
+  videoImg: {}
 }
 const mutations = {
   HOMELIST(state, homezongshu) {
@@ -18,6 +19,9 @@ const mutations = {
   },
   NOTICE(state, notice) {
     state.notice = notice
+  },
+  IMGVIDEO(state, videoImg) {
+    state.videoImg = videoImg
   }
 }
 const actions = {
@@ -44,7 +48,16 @@ const actions = {
   },
   async notice({ commit }, params = {}) {
     let res = await article(params)
+    if (res.code == 1) {
+    }
     commit('NOTICE', res.data)
+  },
+  // 获取首页视频照片仪器信息
+  async getImgVideo({ commit }) {
+    let res = await getVideo()
+    if (res.code == 1) {
+      commit('IMGVIDEO', res.data)
+    }
   }
 }
 const getters = {}

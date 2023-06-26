@@ -4,13 +4,13 @@
     <div class="top20"></div>
     <div class="main_box">
       <div class="left">
-        <h1>3D打印机</h1>
+        <h1>{{ videoImg.yiqiname }}</h1>
         <div class="t"></div>
-        <p>在3D打印过程中，保持小于25ppm超低氧气量，生产出高强度、 高纯度金属产品，配套增材制造设计软件实现工艺参数可调， 熔池粉床监控软件实现对增材制造过程的实时监控和预测。</p>
-        <a href="#">更多设备>></a>
+        <p>{{  videoImg.jianjie  }}</p>
+        <a @click="$router.push('/yiqi/page?page=1&pageSize=10')">更多设备>></a>
       </div>
       <div class="center">
-        <video src="../assets/uploads/WeChat_20230508111713.mp4" class="v"></video>
+        <video :src="videoImg.video" class="v" controls></video>
       </div>
       <div class="right">
         <h1>--实时设备--</h1>
@@ -21,8 +21,7 @@
             </li>
           </ul>
         </div>
-        <a href="javascript:;" class="more">更多信息>></a>
-        <a href="javascript:;" class="yyxt">进入仪器预约系统</a>
+        <a @click="$router.push({name:'yiqi'})" class="yyxt">进入仪器列表</a>
       </div>
     </div>
     <!-- 统计 -->
@@ -55,7 +54,9 @@
     <div class="news">
       <div class="news_header">新闻动态</div>
       <div class="container">
-        <div class="container_bg"></div>
+        <div class="container_bg">
+          <img :src="videoImg.xinwenimg" alt="">
+        </div>
         <div class="container_list">
           <ul>
             <homeNews v-for="(item) in article.records" :key="item.id" :newsList="item"></homeNews>
@@ -115,13 +116,15 @@ export default {
     this.getHomeList()
     this.getHomeNews()
     this.getHomeNotice()
+    this.getHomeImgVideo()
   },
   computed: {
     ...mapState({
       homezongshu: state => state.home.homezongshu,
       homeList: state => state.home.homeList,
       article: state => state.home.article,
-      notice: state => state.home.notice
+      notice: state => state.home.notice,
+      videoImg: state => state.home.videoImg
     })
   },
   methods: {
@@ -136,6 +139,9 @@ export default {
     },
     getHomeNotice() {
       this.$store.dispatch('notice', this.notices)
+    },
+    getHomeImgVideo() {
+      this.$store.dispatch('getImgVideo')
     }
   }
 }

@@ -40,8 +40,8 @@ export default {
       this.$store.dispatch('shiyongzhong', this.shiyongzhong)
     },
     getPage(index) {
-      this.yishiyong.page = index
-      this.$router.push({ name: 'yishiyong', query: { page: this.yishiyong.page, pageSize: this.yishiyong.pageSize, shiYong: this.yishiyong.shiYong, order: this.yishiyong.order } })
+      this.shiyongzhong.page = index
+      this.$router.push({ name: 'shiyongzhong', query: { page: this.shiyongzhong.page, pageSize: this.shiyongzhong.pageSize, shiYong: this.shiyongzhong.shiYong, order: this.shiyongzhong.order } })
       this.getshiyongzhong()
     }
   },

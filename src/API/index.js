@@ -23,11 +23,13 @@ export const yiqiSearch = params => requests({ url: '/yiqi/page?', method: 'get'
 // 首页搜索
 export const search = params => requests({ url: `/wenzhang/find/${params.title}`, method: 'get', params })
 //新闻和公告
-export const article = params => requests({ url: `/wenzhang/page?page=${params.page}&pageSize=${params.pageSize}&${params.leixing}=${params.leixing}`, method: 'get', params })
-//热门仪器、新闻热点、热点公告
+export const article = params => requests({ url: `/wenzhang/page?`, method: 'get', params })
+// 热门仪器
+export const getYiqiHot = params => requests({ url: '/yiqi/page?', method: 'get', params })
+//新闻热点、热点公告
 export const getHots = params => requests({ url: `/wenzhang/page?page=1&pageSize=${params.pageSize}&${params.leixing}=${params.leixing}`, method: 'get', params })
 // 规章指南
-export const getGuide = () => requests({ url: `/wenzhang/page?page=1&pageSize=6&leixing=3`, method: 'get' })
+export const getGuide = params => requests({ url: `/wenzhang/page?`, method: 'get', params })
 // 平台简介
 export const getSynopsis = () => requests({ url: '/wenzhang/page?page=1&pageSize=1&leixing=4', method: 'get' })
 // 个人信息我的预约（已使用）
@@ -42,8 +44,8 @@ export const addYiqi = params => requests({ url: '/yiqi', method: 'post', params
 export const xiugaoYiqi = params => requests({ url: '/yiqi', method: 'put', params })
 // 我的共享（修改仪器回显到对话框里）
 export const HuiXian = data => requests({ url: `/yiqi/details/${data}`, method: 'get', data })
-// 上传照片
-export const reqImages = params => requests({ url: '/common/upload', method: 'post', params })
+// 回显照片
+export const getImages = data => requests({ url: `/common/download?name=${data}`, method: 'get', data })
 // 删除仪器
 export const Delete = params => requests({ url: `/yiqi?${params.ids}`, method: 'delete', params })
 // 点击收藏
@@ -52,3 +54,13 @@ export const addCollect = params => requests({ url: '/shoucang', method: 'post',
 export const viewCollect = params => requests({ url: `/shoucang/boolean?`, method: 'get', params })
 // 取消收藏
 export const deleteCollect = params => requests({ url: '/shoucang?', method: 'delete', params })
+// 预约的回显
+export const yuyuetime = params => requests({ url: `/yuyue/list?`, method: 'get', params })
+// 预约
+export const yuyue = params => requests({ url: '/yuyue', method: 'post', params })
+// 取消预约
+export const deleteYuYue = params => requests({ url: '/yuyue?', method: 'delete', params })
+// 新闻、公告、规章指南详情
+export const newsDateils = params => requests({ url: `/wenzhang/xq?`, method: 'get', params })
+// 首页视频
+export const getVideo = () => requests({ url: '/hostYiqi', method: 'get' })

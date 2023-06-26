@@ -53,6 +53,7 @@ export default {
       }
     }
   },
+
   computed: {
     ...mapState({
       nocticeList: state => state.notice.noticeList,

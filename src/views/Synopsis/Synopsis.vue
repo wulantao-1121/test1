@@ -11,10 +11,7 @@
     <div class="ptjj_content">
       <div class="kong"></div>
       <div class="ptjj_title">山东信息职业技术学院平台简介</div>
-      <div class="ptjj_introduce" v-for="item in synopsis.records" :key="item.id">
-        <h2>{{ item.biaoti  }}</h2>
-        <p>{{ item.neirong }}</p>
-      </div>
+      <div class="ptjj_introduce" v-for="item in synopsis.records" :key="item.id" v-html="item.neirong"></div>
     </div>
   </div>
 </template>

@@ -59,9 +59,20 @@ export default {
     async submitForm(ruleForm) {
       try {
         await this.$store.dispatch('getUserLogin', ruleForm)
-        this.$router.push('/')
+        this.$message({
+          message: '登录成功',
+          type: 'success',
+          duration: 1000
+        })
+        setTimeout(() => {
+          this.$router.push('/')
+        }, 1000)
       } catch (error) {
-        alert(error.message)
+        this.$message({
+          message: '登录失败',
+          type: 'error',
+          duration: 1000
+        })
       }
     }
   },

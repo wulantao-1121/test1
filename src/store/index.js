@@ -16,6 +16,10 @@ import guide from './guide'
 import used from './used'
 import collect from './collect'
 import enjoy from './enjoy'
+import reservation from './reservation'
+import newsDateils from './newsDateils'
+import noticeDateils from './noticeDateils'
+import GudieDateils from './GudieDateils'
 export default new Vuex.Store({
   // vuex仓库模块开发
   modules: {
@@ -30,6 +34,10 @@ export default new Vuex.Store({
     guide,
     used,
     collect,
-    enjoy
+    enjoy,
+    reservation,
+    newsDateils,
+    noticeDateils,
+    GudieDateils
   }
 })

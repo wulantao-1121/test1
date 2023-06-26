@@ -1,7 +1,10 @@
 <template>
   <li class="grxx_yiqi_li">
-    <div class="grxx_yiqi_img">
-      <img class="" src="" alt="" />
+    <div class="grxx_yiqi_img" v-if="yishiyongList.yiqiDto.yiqitupian!==''">
+      <img :src="this.img" alt="" />
+    </div>
+    <div class="grxx_yiqi_img" v-else>
+      <img src="@/assets/images/404img.jpg" alt="" />
     </div>
     <div class="grxx_yiqi_xiangqing">
       <h1 class="grxx_yiqi_h1"><a href="javascript:;">{{ yishiyongList.yiqiDto.yiqiming }}</a></h1>
@@ -12,7 +15,7 @@
           <dd>所属系：<span>{{ yishiyongList.yiqiDto.xiName }}</span></dd>
           <dd>放置位置：<span>{{ yishiyongList.yiqiDto.yiqididian }}</span></dd>
         </dl>
-        <div class="grxx_yiqi_time">{{ yishiyongList.addtime }} 至 {{ yishiyongList.jieshushijian }}</div>
+        <div class="grxx_yiqi_time">{{ yishiyongList.yuyueshijian }} 至 {{ yishiyongList.jieshushijian }}</div>
       </div>
     </div>
   </li>
@@ -21,7 +24,15 @@
 <script>
 export default {
   name: 'usedList',
-  props: ['yishiyongList']
+  props: ['yishiyongList'],
+  data() {
+    return {
+      img: ''
+    }
+  },
+  created() {
+    this.img = 'http://localhost:8080/common/download?name=' + this.yishiyongList.yiqiDto.yiqitupian
+  }
 }
 </script>
 

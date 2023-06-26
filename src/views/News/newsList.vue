@@ -3,7 +3,7 @@
     <div class="news_img"></div>
     <div class="news_content">
       <h1>
-        <a href="javascript:;">{{ newList.biaoti }}</a>
+        <a @click="$router.push(`/newsDateils?wenzhang=${newList.id}`)">{{ newList.biaoti }}</a>
       </h1>
       <span class="news_time">发布时间:{{ newList.addtime }}</span>
     </div>
@@ -13,9 +13,17 @@
 <script>
 export default {
   name: 'newsList',
-  props: ['newList']
+  props: ['newList'],
+  data() {
+    return {
+      newsid: {
+        id: ''
+      }
+    }
+  },
+  methods: {}
 }
 </script>
 
-<style>
+<style lang="less" scoped>
 </style>

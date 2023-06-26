@@ -5,7 +5,7 @@
         <usedList v-for="item in yishiyongList.records" :key="item.id" :yishiyongList="item"></usedList>
       </ul>
     </div>
-    <Page :total="yishiyongList.total" :pageSize="yishiyongList.size" :currentPage="yishiyongList.current" @getPage="getPage"></Page>
+    <Page :total="yishiyongList.total" :pageSize="yishiyongList.size" :currentPage="parseInt($route.query.page)" @getPage="getPage"></Page>
   </div>
 </template>
 
@@ -30,6 +30,7 @@ export default {
     usedList
   },
   mounted() {
+    this.yishiyong.page = this.$route.query.page || 1
     this.getyishiyongData()
   },
   computed: {
@@ -39,7 +40,6 @@ export default {
   },
   methods: {
     getyishiyongData() {
-      console.log(this.yishiyong)
       this.$store.dispatch('yishiyong', this.yishiyong)
     },
     getPage(index) {

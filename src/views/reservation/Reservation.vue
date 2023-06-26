@@ -5,8 +5,8 @@
     <div id="crumbs">
       <el-breadcrumb separator>
         <el-breadcrumb-item><router-link to="/">首页</router-link></el-breadcrumb-item>
-        <el-breadcrumb-item><router-link to="/yiqi">仪器列表</router-link></el-breadcrumb-item>
-        <el-breadcrumb-item><router-link to="/yiqi/details">仪器详情</router-link></el-breadcrumb-item>
+        <el-breadcrumb-item><a @click="$router.push(`/yiqi/page?page=${yiqiPage}&pageSize=10`)">仪器列表</a></el-breadcrumb-item>
+        <el-breadcrumb-item><a @click="$router.push(`/yiqi/details/${detailsPage}`)">仪器详情</a></el-breadcrumb-item>
         <el-breadcrumb-item><a href="javascript:;">预约信息</a></el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -16,27 +16,27 @@
           <tbody>
             <tr>
               <th>仪器名称：</th>
-              <td>全数字化核磁共振</td>
+              <td>{{ Details.yiqiming }}</td>
             </tr>
             <tr>
               <th>管理员：</th>
-              <td>王老师</td>
+              <td>{{ Details.fuzeren }}</td>
             </tr>
             <tr>
               <th>规格/型号：</th>
-              <td>AutoPurification TM</td>
+              <td>{{ Details.yiqixinghao }}</td>
             </tr>
             <tr>
               <th>联系方式：</th>
-              <td>15566667777</td>
+              <td>{{ Details.fuzerendianhua }}</td>
             </tr>
             <tr>
               <th>所属系：</th>
-              <td>软件与大数据系</td>
+              <td>{{ Details.xiName }}</td>
             </tr>
             <tr>
               <th>放置地点：</th>
-              <td>2号楼906室</td>
+              <td>{{ Details.yiqididian }}</td>
             </tr>
           </tbody>
         </table>
@@ -50,12 +50,23 @@
         </div>
         <!-- 预约日历 -->
         <div class="yuyue_data">
-          <el-calendar v-model="value"></el-calendar>
+          <el-calendar>
+            <!-- 这里使用的是 2.5 slot 语法，对于新项目请使用 2.6 slot 语法-->
+            <template slot="dateCell" slot-scope="{data}">
+              <div>{{ data.day.split('-').slice(1).join('-') }}</div>
+              <div v-for="(item,index) in getTime" :key="index" ref="boxred">
+                <div v-if="data.day===item.stime.slice(0,10)" style="height: 100%;" ref="time">
+                  <div v-if="item.isRed==true" ref="red"></div>
+                  <div v-if="item.isRed==false" ref="orange"></div>
+                </div>
+              </div>
+            </template>
+          </el-calendar>
           <div class="yiqi_yuyue_time">
-            <el-date-picker v-model="value1" type="datetimerange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"> </el-date-picker>
+            <el-date-picker v-model="value1" type="datetimerange" value-format="yyyy-MM-ddTHH:mm:ss" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"> </el-date-picker>
           </div>
           <div class="yiqi_yuyue_box">
-            <button class="yiqi_yuyue_time_btn" type="submit">确定</button>
+            <button class="yiqi_yuyue_time_btn" type="submit" @click="yuyueSubmit">确定</button>
           </div>
         </div>
       </div>
@@ -65,48 +76,100 @@
 
 <script>
 import '@/assets/css/reservation.less'
+import { mapGetters, mapState } from 'vuex'
 export default {
   name: 'Reservation',
+  props: ['yuyuedetails'],
   data() {
     return {
       value: new Date(),
-      pickerOptions: {
-        shortcuts: [
-          {
-            text: '最近一周',
-            onClick(picker) {
-              const end = new Date()
-              const start = new Date()
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
-              picker.$emit('pick', [start, end])
-            }
-          },
-          {
-            text: '最近一个月',
-            onClick(picker) {
-              const end = new Date()
-              const start = new Date()
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
-              picker.$emit('pick', [start, end])
-            }
-          },
-          {
-            text: '最近三个月',
-            onClick(picker) {
-              const end = new Date()
-              const start = new Date()
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
-              picker.$emit('pick', [start, end])
-            }
-          }
-        ]
-      },
       value1: [new Date(), new Date()],
-      value2: ''
+      yuyuetime: {
+        year: new Date().getFullYear(),
+        month: new Date().getMonth() + 1,
+        id: localStorage.getItem('yuyue')
+      },
+      yuyue: {
+        yiqiId: '',
+        yuyueshijian: '',
+        jieshushijian: '',
+        zhuangtai: 0
+      },
+      detailsPage: '',
+      yiqiPage: ''
     }
+  },
+  created() {
+    this.$store.dispatch('yuyuetime', this.yuyuetime)
+    this.detailsPage = localStorage.getItem('yuyue')
+    this.yiqiPage = sessionStorage.getItem('yiqiPage')
+  },
+  methods: {
+    getDetailsVal() {
+      this.$store.dispatch('yuyuetime', this.yuyuetime)
+    },
+    async yuyueSubmit() {
+      try {
+        this.yuyue.yiqiId = localStorage.getItem('yuyue')
+        this.yuyue.yuyueshijian = this.value1[0]
+        this.yuyue.jieshushijian = this.value1[1]
+        await this.$store.dispatch('yuyue', this.yuyue)
+        this.$message({
+          message: '预约成功',
+          type: 'success',
+          duration: 500
+        })
+        this.getDetailsVal()
+        location.reload()
+      } catch (error) {
+        this.$message({
+          message: '预约失败',
+          type: 'error',
+          duration: 500
+        })
+      }
+    },
+    $cleanup() {
+      this.$store.commit('clearData')
+    }
+  },
+  mounted() {
+    this.getDetailsVal()
+  },
+  updated() {
+    if (this.$refs.boxred) {
+      for (let i = 0; i < this.$refs.boxred.length; i++) {
+        if (this.$refs.boxred[i].childElementCount <= 0) {
+          this.$refs.boxred[i].remove()
+        }
+      }
+    }
+    // 日历背景色变红色
+    let red = this.$refs.red
+    if (red) {
+      for (let i = 0; i < red.length; i++) {
+        red[i].parentElement.parentElement.parentElement.style.background = 'rgb(250, 60, 0)'
+      }
+    }
+    // 日历背景色变黄色
+    let orange = this.$refs.orange
+    if (orange) {
+      for (let j = 0; j < orange.length; j++) {
+        orange[j].parentElement.parentElement.parentElement.style.background = 'rgb(250, 251, 100)'
+      }
+    }
+  },
+  computed: {
+    ...mapGetters(['Details']),
+    ...mapState({
+      getTime: state => state.reservation.yuyuetime
+    })
+  },
+  beforeDestroy() {
+    this.$cleanup()
   }
 }
 </script>
 
-<style>
+<style lang="less" scoped>
 </style>

@@ -1,7 +1,10 @@
 <template>
   <li class="grxx_yiqi_li">
-    <div class="grxx_yiqi_img">
-      <img class="" src="" alt="" />
+    <div class="grxx_yiqi_img" v-if="collect.yiqitupian!==''">
+      <img :src=img alt="" />
+    </div>
+    <div class="grxx_yiqi_img" v-else>
+      <img src='' alt="" />
     </div>
     <div class="grxx_yiqi_xiangqing">
       <h1 class="grxx_yiqi_h1"><a href="javascript:;">{{ collect.yiqiming }}</a></h1>
@@ -13,7 +16,7 @@
           <dd>放置位置：<span>{{ collect.yiqididian}}</span></dd>
         </dl>
         <div class="grxx_yiqi_collect">
-          <img src="@/assets/images/收藏.png" alt="" />
+          <img src="@/assets/images/加星收藏_填充.png" alt="" />
         </div>
       </div>
     </div>
@@ -23,7 +26,15 @@
 <script>
 export default {
   name: 'collectList',
-  props: ['collect']
+  props: ['collect'],
+  data() {
+    return {
+      img: ''
+    }
+  },
+  created() {
+    this.img = 'http://localhost:8080/common/download?name=' + this.collect.yiqitupian
+  }
 }
 </script>
 

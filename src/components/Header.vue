@@ -3,14 +3,12 @@
     <!-- 登录 -->
     <div class="login_box">
       <div class="login_nav">
-        <!-- !$store.state.login.token -->
         <template v-if="!$store.state.login.token">
           <div class="loginandout">
             <a href="javascript:;" class="login_prompt" @click="$router.push('/login')">欢迎您！请登录</a>
           </div>
         </template>
         <template v-else>
-          <!-- {{ $store.state.login.token }} -->
           <div class="loginandout">
             <a href="javascript:;" class="login_prompt" @click="$router.push('/my/used/yishiyong/page')">{{$store.state.login.token}}</a>
             <span>|</span>
@@ -33,7 +31,6 @@
             <router-link to="/">首页</router-link>
           </li>
           <li>
-            <!-- {path:'yiqi/page',query:{page:yiqi.page,pageSize:yiqi.pageSize}} -->
             <router-link :to="{name:'yiqi',query:{page:yiqi.page,pageSize:yiqi.pageSize}}">仪器列表</router-link>
           </li>
           <li>
@@ -52,7 +49,7 @@
         <div class="search">
           <el-form :label-position="labelPosition" label-width="80px" :model="searchFrom">
             <el-form-item>
-              <el-input v-model="searchFrom.title"></el-input>
+              <el-input v-model="searchFrom.title" placeholder="请输入要搜索的新闻或公告"></el-input>
               <el-button type="primary" @click="$router.push(`/search/${searchFrom.title}`)">搜索</el-button>
             </el-form-item>
           </el-form>
@@ -63,7 +60,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   name: 'Header',
   data() {
@@ -87,7 +83,9 @@ export default {
       try {
         this.$store.dispatch('userLoginOut')
         // 退出成功到首页
-        this.$router.push('/')
+        if (this.$route.path !== '/') {
+          this.$router.push('/')
+        }
       } catch (error) {
         alert(error.message)
       }

@@ -1,7 +1,10 @@
 <template>
   <li class="grxx_yiqi_li">
-    <div class="grxx_yiqi_img">
-      <img class="" src="" alt="" />
+    <div class="grxx_yiqi_img" v-if="weishiyong.yiqiDto.yiqitupian!==''">
+      <img :src="this.img" alt="" />
+    </div>
+    <div class="grxx_yiqi_img" v-else>
+      <img src="" alt="" />
     </div>
     <div class="grxx_yiqi_xiangqing">
       <h1 class="grxx_yiqi_h1">
@@ -14,7 +17,7 @@
           <dd>所属系：<span>{{ weishiyong.yiqiDto.xiName }}</span></dd>
           <dd>放置位置：<span>{{ weishiyong.yiqiDto.yiqididian }}</span></dd>
         </dl>
-        <el-button type="success" class="grxx_yiqi_quxiao">取消预约</el-button>
+        <el-button type="success" class="grxx_yiqi_quxiao" @click="deleteYuYue">取消预约</el-button>
       </div>
     </div>
   </li>
@@ -23,7 +26,38 @@
 <script>
 export default {
   name: 'notusedList',
-  props: ['weishiyong']
+  props: ['weishiyong'],
+  data() {
+    return {
+      img: '',
+      deleteyuyue: {
+        ids: ''
+      }
+    }
+  },
+  created() {
+    this.img = 'http://localhost:8080/common/download?name=' + this.weishiyong.yiqiDto.yiqitupian
+  },
+  methods: {
+    deleteYuYue() {
+      try {
+        this.deleteyuyue.ids = this.weishiyong.id
+        this.$store.dispatch('deleteYuYue', this.deleteyuyue)
+        this.$message({
+          message: '取消预约成功',
+          type: 'success',
+          duration: 1000
+        })
+        this.$bus.$emit('again', true)
+      } catch (error) {
+        this.$message({
+          message: '取消预约失败',
+          type: 'error',
+          duration: 1000
+        })
+      }
+    }
+  }
 }
 </script>
 

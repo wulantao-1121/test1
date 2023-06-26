@@ -1,7 +1,10 @@
 <template>
   <li class="grxx_yiqi_li">
-    <div class="grxx_yiqi_img">
-      <img class="" src="" alt="" />
+    <div class="grxx_yiqi_img" v-if="enjoy.yiqitupian!==''">
+      <img :src=this.img alt="" />
+    </div>
+    <div class="grxx_yiqi_img" v-else>
+      <img src="" alt="" />
     </div>
     <div class="grxx_yiqi_xiangqing">
       <h1 class="grxx_yiqi_h1"><a href="javascript:;">{{ enjoy.yiqiming }}</a></h1>
@@ -13,7 +16,7 @@
           <dd>放置位置：<span>{{ enjoy.yiqididian }}</span></dd>
         </dl>
         <div class="grxx_yiqi_share">
-          <el-button type="primary" class="grxx_yiqi_xiugai" @click="updata">修改</el-button>
+          <el-button type="primary" class="grxx_yiqi_xiugai" @click="updata" :yiqitupian="enjoy.yiqitupian">修改</el-button>
           <el-button type="danger" class="grxx_yiqi_shanchu" @click="YiQiDelete"> 删除</el-button>
           <el-button type="success" v-if="enjoy.yiqizhuangtai==1" class="grxx_yiqi_weixiu" @click="weihu">维修</el-button>
           <el-button type="warning" v-else class="grxx_yiqi_quxiaoweixiu" @click="quxiaoweihu">取消维修</el-button>
@@ -30,35 +33,41 @@ export default {
   props: ['enjoy'],
   data() {
     return {
-      dialogImageUrl: '',
-      dialogVisible: false,
-      dialogFormVisible: false,
-      formLabelWidth: '120px',
       delete: {
         ids: ''
       },
       maintenance: {
         id: '',
         yiqizhuangtai: 0
-      }
+      },
+      img: ''
     }
   },
-  mounted() {},
+  created() {
+    this.img = 'http://localhost:8080/common/download?name=' + this.enjoy.yiqitupian
+  },
   methods: {
     updata() {
-      this.$bus.$emit('add', 1)
+      this.$bus.$emit('add', 1, this.enjoy)
       this.$bus.$emit('id', this.enjoy.id)
     },
     // 删除仪器
     async YiQiDelete() {
       try {
         this.delete.ids = this.enjoy.id
-        console.log(this.delete)
         await this.$store.dispatch('YiQiDelete', this.delete)
-        alert('删除成功')
+        this.$message({
+          message: '删除成功',
+          type: 'success',
+          duration: 1000
+        })
         this.$bus.$emit('delete', 0)
       } catch (error) {
-        alert(error.message)
+        this.$message({
+          message: '删除失败',
+          type: 'error',
+          duration: 1000
+        })
       }
     },
     // 维修

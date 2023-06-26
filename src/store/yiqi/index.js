@@ -1,10 +1,11 @@
 //yiqi 仓库
-import { yiqiList, yiqiXi, yiqiFenlei, yiqiSearch } from '@/api'
+import { yiqiList, yiqiXi, yiqiFenlei, yiqiSearch, getYiqiHot } from '@/api'
 const state = {
   // 仪器列表的数据
   yiqiList: [],
   yiqiXi: [],
-  yiqiFenLei: []
+  yiqiFenLei: [],
+  yiqiHot: []
 }
 const mutations = {
   YIQILIST(state, yiqiList) {
@@ -15,6 +16,12 @@ const mutations = {
   },
   YIQIFENLEI(state, yiqiFenLei) {
     state.yiqiFenLei = yiqiFenLei
+  },
+  YIQIHOT(state, yiqiHot) {
+    state.yiqiHot = yiqiHot
+  },
+  clearData(state) {
+    state.yiqiList.records = []
   }
 }
 const actions = {
@@ -41,6 +48,13 @@ const actions = {
     let res = await yiqiSearch(params)
     if (res.code == 1) {
       commit('YIQILIST', res.data)
+    }
+  },
+  //热门仪器
+  async getyiqiHot({ commit }, params) {
+    let res = await getYiqiHot(params)
+    if (res.code == 1) {
+      commit('YIQIHOT', res.data)
     }
   }
 }

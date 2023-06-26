@@ -1,6 +1,11 @@
 <template>
   <li class="yiqi_li">
-    <div class="yiqi_img"></div>
+    <div class="yiqi_img" v-if="list.yiqitupian!==''">
+      <img :src="this.img" alt="">
+    </div>
+    <div class="yiqi_img" v-else>
+      <img src="@/assets/images/404img.jpg" alt="">
+    </div>
     <div class="yiqi_content">
       <h1>
         <!-- $router.push(`/yiqi/details/:id`) -->
@@ -35,10 +40,13 @@ export default {
   data() {
     return {
       id: '',
-      msg: '1'
+      msg: '1',
+      img: ''
     }
   },
-
+  created() {
+    this.img = 'http://localhost:8080/common/download?name=' + this.list.yiqitupian
+  },
   methods: {
     getId(id) {
       this.id = id
