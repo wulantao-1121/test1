@@ -1,0 +1,200 @@
+.right {
+  width: 100%;
+}
+.right .ri-up {
+  height: 80px;
+  background-color: #528bb7;
+}
+.right .ri-up p {
+  font-size: 20px;
+  line-height: 80px;
+  padding-left: 24px;
+}
+.right .ri-down .do-anniu {
+  display: flex;
+  align-items: center;
+  margin: 15px auto;
+  width: 95%;
+  height: 80px;
+  color: #000;
+  background: #fff;
+}
+.right .ri-down .do-anniu .el-form {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.right .ri-down .do-anniu .el-form .el-form-item {
+  margin-bottom: 0;
+}
+.right .ri-down .do-anniu .el-form .el-form-item .el-form-item__content .el-input {
+  width: 200px;
+  height: 30px;
+}
+.right .ri-down .do-anniu .el-form .el-form-item .el-form-item__content .el-button {
+  margin: 0 10px;
+}
+.right .ri-down .do-anniu .add {
+  margin-left: 50px;
+  height: 40px;
+  width: 100px;
+}
+.right .ri-down .do_jihuo {
+  margin: auto;
+  width: 95%;
+  height: 50px;
+  background: #EFEFEF;
+  display: flex;
+}
+.right .ri-down .do_jihuo .jihuo,
+.right .ri-down .do_jihuo .weijihuo {
+  display: block;
+  width: 100px;
+  height: 50px;
+  border-radius: 0;
+  margin-left: 0;
+  line-height: 50px;
+  text-align: center;
+}
+.right .ri-down .do_jihuo .sreach {
+  width: 100px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 16px;
+  color: #fff;
+  background: #409eff;
+}
+.right .ri-down .do_jihuo .jihuozhuangtai {
+  color: #fff;
+  background-color: #409eff;
+}
+.right .ri-down .do-main {
+  margin: auto;
+  width: 95%;
+  background: #fff;
+}
+.right .ri-down .do-main .title table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.right .ri-down .do-main .title table .table_title {
+  height: 60px;
+  background: #f0f0f0;
+}
+.right .ri-down .do-main .title table .table_title th {
+  font-size: 16px;
+  font-weight: 400;
+}
+.right .ri-down .do-main .title table .table_title .xuhao {
+  width: 10%;
+}
+.right .ri-down .do-main .title table .table_title .yuyueId {
+  width: 5%;
+}
+.right .ri-down .do-main .title table .table_title .jie {
+  width: 5%;
+}
+.right .ri-down .do-main .title table .table_title .fuzeren {
+  width: 5%;
+}
+.right .ri-down .do-main .title table .table_title .time {
+  width: 15%;
+}
+.right .ri-down .do-main .title table .table_title .caozuo {
+  width: 20%;
+}
+.right .ri-down .do-main .title table .table_contion {
+  position: relative;
+  border-bottom: 1px solid #ccc;
+}
+.right .ri-down .do-main .title table .table_contion .xuhao {
+  text-align: center;
+}
+.right .ri-down .do-main .title table .table_contion .xinxi {
+  display: flex;
+}
+.right .ri-down .do-main .title table .table_contion .xinxi .yiqi_img img {
+  width: 60px;
+  height: 60px;
+}
+.right .ri-down .do-main .title table .table_contion .xinxi .yiqi {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 20px;
+}
+.right .ri-down .do-main .title table .table_contion .xinxi .yiqi h1 {
+  font-weight: 300;
+  font-size: 18px;
+}
+.right .ri-down .do-main .title table .table_contion .xinxi .yiqi dl {
+  display: flex;
+  flex-wrap: wrap;
+}
+.right .ri-down .do-main .title table .table_contion .xinxi .yiqi dl dd {
+  display: flex;
+}
+.right .ri-down .do-main .title table .table_contion .xinxi .yiqi dl dd span {
+  display: block;
+  width: 60px;
+  font-size: 14px;
+}
+.right .ri-down .do-main .title table .table_contion .xinxi .yiqi dl dd .w {
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.right .ri-down .do-main .title table .table_contion .jie {
+  font-size: 14px;
+  text-align: center;
+}
+.right .ri-down .do-main .title table .table_contion .fuzeren {
+  font-size: 14px;
+  text-align: center;
+}
+.right .ri-down .do-main .title table .table_contion .caozuo {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 20%;
+}
+.right .ri-down .do-main .title table .table_contion .caozuo .bianji,
+.right .ri-down .do-main .title table .table_contion .caozuo .shanchu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 30px;
+  font-size: 12px;
+  color: #fff;
+}
+.right .ri-down .do-main .title table .table_contion .time div {
+  text-align: center;
+  font-size: 13px;
+}
+.right .ri-down .do-main .page {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.right .el-dialog .el-dialog__body .el-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+.right .el-dialog .el-dialog__body .el-form .el-form-item {
+  width: 30%;
+  margin-bottom: 20px;
+}
+.right .el-dialog .el-dialog__body .el-form .gongnengtese,
+.right .el-dialog .el-dialog__body .el-form .fujianpeizhi,
+.right .el-dialog .el-dialog__body .el-form .zhuyishixiang {
+  width: 50%;
+}
+.right .el-dialog .el-dialog__body .el-form .gongnengtese .el-textarea .el-textarea__inner,
+.right .el-dialog .el-dialog__body .el-form .fujianpeizhi .el-textarea .el-textarea__inner,
+.right .el-dialog .el-dialog__body .el-form .zhuyishixiang .el-textarea .el-textarea__inner {
+  min-height: 100px !important;
+}
