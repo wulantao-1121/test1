@@ -6,7 +6,7 @@
       <span class="years">{{ noticeList.addtime_y }}</span>
     </div>
     <div class="content">
-      <a href="javascript:;" class="notice_title">{{ noticeList.biaoti }}</a>
+      <a @click="$router.push(`/noticeDateils?notice=${noticeList.id}`)" class="notice_title">{{ noticeList.biaoti }}</a>
       <p class="notice_content">{{ noticeList.neirong.replace(/<[^>]*>/g, '') }}</p>
     </div>
   </li>

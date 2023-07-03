@@ -122,11 +122,11 @@ const router = new VueRouter({
           component: () => import('@/views/gudieDateils/index.vue')
         }
       ]
+    },
+    {
+      path: '/home',
+      redirect: '/'
     }
-    // {
-    //   path: '/home',
-    //   redirect: '/'
-    // }
   ],
   scrollBehavior(to, from, savedPosition) {
     // 始终滚动到顶部
@@ -140,14 +140,25 @@ router.beforeEach((to, from, next) => {
   let token = store.state.login.token
   if (token) {
     if (to.path == '/login') {
-      next('/home')
+      next({
+        path: '/'
+      })
     } else {
       next()
     }
   } else {
-    // to.path == '/my' || to.path == '/my/used' || to.path == '/my/used/yishiyong' || to.path == '/my/used/weishiyong'
-    if (to.path == '/my' || to.path == '/my/used' || to.path == '/my/used/yishiyong' || to.path == '/my/used/weishiyong') {
-      next('/login')
+    if (
+      to.path == '/my' ||
+      to.path == '/my/used' ||
+      to.path == '/my/used/yishiyong/page' ||
+      to.path == '/my/used/weishiyong/page' ||
+      to.path == '/my/collect/page' ||
+      to.path == '/my/enjoy/page' ||
+      to.name == 'reservation'
+    ) {
+      next({
+        path: '/login'
+      })
     } else {
       next()
     }

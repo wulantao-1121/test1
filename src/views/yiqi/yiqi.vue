@@ -20,7 +20,6 @@
       <!-- current-page 当前页   -->
       <!-- page-count 总页数 -->
       <!-- page-size 每页显示的个数 -->
-      {{ parseInt($route.query.page) }}
       <Page :total="yiqiList.total" :pageSize="yiqiList.size" :currentPage="parseInt($route.query.page)" @getPage="getPage"></Page>
     </div>
   </div>

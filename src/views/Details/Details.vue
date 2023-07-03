@@ -153,7 +153,11 @@ export default {
   methods: {
     yuyue() {
       localStorage.setItem('yuyue', this.$route.params.id)
-      this.$router.push('/yiqi/reservation')
+      if (localStorage.getItem('token')) {
+        this.$router.push('/yiqi/reservation')
+      } else {
+        this.$router.push('/login')
+      }
     },
     $cleanup() {
       this.$store.commit('clearData')

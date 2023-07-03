@@ -45,7 +45,7 @@ export default {
     }
   },
   created() {
-    this.img = 'http://localhost:8080/common/download?name=' + this.list.yiqitupian
+    this.img = 'http://10.69.6.106:8080/common/download?name=' + this.list.yiqitupian
   },
   methods: {
     getId(id) {

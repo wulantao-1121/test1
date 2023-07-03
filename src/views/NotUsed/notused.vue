@@ -40,11 +40,15 @@ export default {
     this.$bus.$on('again', value => {
       if (value) {
         this.getweishiyong()
-        console.log(this.$store.state.used.weishiyongList.records.length)
         if (this.$store.state.used.weishiyongList.records.length - 1 === 0) {
-          this.weishiyong.page = this.$route.query.page - 1
-          this.$router.push({ name: 'weishiyong', query: { page: this.weishiyong.page, pageSize: this.weishiyong.pageSize, shiYong: this.weishiyong.shiYong, order: this.weishiyong.order } })
-          this.$store.dispatch('weishiyong', this.weishiyong)
+          if (this.$route.query.page === 1) {
+            this.weishiyong.page = 1
+            this.$store.dispatch('weishiyong', this.weishiyong)
+          } else if (this.$route.query.page > 1) {
+            this.weishiyong.page = this.$route.query.page - 1
+            this.$router.push({ name: 'weishiyong', query: { page: this.weishiyong.page, pageSize: this.weishiyong.pageSize, shiYong: this.weishiyong.shiYong, order: this.weishiyong.order } })
+            this.$store.dispatch('weishiyong', this.weishiyong)
+          }
         }
       }
     })

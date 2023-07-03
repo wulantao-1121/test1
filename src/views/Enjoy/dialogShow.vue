@@ -1,5 +1,5 @@
 <template>
-  <el-dialog title="新增仪器" :visible.sync="dialogFormVisible">
+  <el-dialog :title="title" :visible.sync="dialogFormVisible">
     <el-form :model="addForm">
       <el-form-item label="仪器名称" :label-width="formLabelWidth" width="50%">
         <el-input v-model="addForm.yiqiming" autocomplete="off"></el-input>
@@ -49,9 +49,7 @@
       <el-upload action="/common/upload" enctype="multipart/form-data" :auto-upload="true" list-type="picture-card" :on-success="handleSuccess" :on-preview="handlePictureCardPreview" :on-remove="handleRemove">
         <i class="el-icon-plus"></i>
       </el-upload>
-
       <img width="148px" :src="imgUrl" alt="">
-
       <el-dialog :visible.sync="dialogVisible">
         <img width="100%" src="" alt="">
       </el-dialog>
@@ -77,11 +75,7 @@ export default {
       dialogFormVisible: false,
       formLabelWidth: '120px',
       isShow: '',
-      enjoydialog: {
-        page: 1,
-        pageSize: 6,
-        isUser: 'aaa'
-      },
+      title: '新增仪器',
       img: {
         name: ''
       }
@@ -101,6 +95,7 @@ export default {
   created() {},
   mounted() {
     this.$bus.$on('add', (value, tu) => {
+      this.title = '修改仪器'
       this.isShow = value
       this.$store.dispatch('yiqiXi')
       this.$store.dispatch('yiqiFenlei')
@@ -128,10 +123,10 @@ export default {
       this.dialogVisible = true
     },
     handleSuccess(response, file, fileList) {
-      this.addForm.yiqitupian = response.data
+      this.addForm.yiqitupian = response.data.fileName
     },
-
     async addAnUpdata() {
+      console.log()
       if (this.isShow == 0) {
         try {
           await this.$store.dispatch('addYiqi', this.addForm)
@@ -140,6 +135,7 @@ export default {
             type: 'success',
             duration: 1000
           })
+
           this.dialogFormVisible = false
         } catch (error) {
           this.$message({
@@ -157,7 +153,7 @@ export default {
             duration: 1000
           })
           this.dialogFormVisible = false
-          this.$store.dispatch('getEnjoy', this.enjoydialog)
+          this.$bus.$emit('load', true)
         } catch (error) {
           this.$message({
             message: '添加失败',

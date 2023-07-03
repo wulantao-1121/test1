@@ -43,9 +43,11 @@ export default {
       img: ''
     }
   },
+
   created() {
-    this.img = 'http://localhost:8080/common/download?name=' + this.enjoy.yiqitupian
+    this.img = `http://localhost:8080/common/download?name=${this.enjoy.yiqitupian}`
   },
+  mounted() {},
   methods: {
     updata() {
       this.$bus.$emit('add', 1, this.enjoy)
@@ -64,7 +66,7 @@ export default {
         this.$bus.$emit('delete', 0)
       } catch (error) {
         this.$message({
-          message: '删除失败',
+          message: error,
           type: 'error',
           duration: 1000
         })
@@ -75,10 +77,18 @@ export default {
       try {
         this.maintenance.id = this.enjoy.id
         await this.$store.dispatch('maintenance', this.maintenance)
-        alert('维修成功')
+        this.$message({
+          message: '确认维修',
+          type: 'success',
+          duration: 1000
+        })
         this.$bus.$emit('delete', 0)
       } catch (error) {
-        alert('维修失败')
+        this.$message({
+          message: error,
+          type: 'error',
+          duration: 1000
+        })
       }
     },
     // 取消维修
@@ -87,10 +97,18 @@ export default {
         this.maintenance.id = this.enjoy.id
         this.maintenance.yiqizhuangtai = 1
         await this.$store.dispatch('EndRepair', this.maintenance)
-        alert('取消维修成功')
+        this.$message({
+          message: '取消维修成功',
+          type: 'success',
+          duration: 1000
+        })
         this.$bus.$emit('delete', 0)
       } catch (error) {
-        alert('取消维修失败')
+        this.$message({
+          message: '取消维修失败',
+          type: 'error',
+          duration: 1000
+        })
       }
     }
   }

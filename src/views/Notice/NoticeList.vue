@@ -1,6 +1,8 @@
 <template>
   <li class="notice_li">
-    <div class="notice_img"></div>
+    <div class="notice_img">
+      <img src="@/assets/images/tongzhi.jpg" alt="" width="100%" height="100%">
+    </div>
     <div class="notice_content">
       <h1>
         <!-- $router.push(`/noticeDateils?notice=${noticeList.id}`) -->

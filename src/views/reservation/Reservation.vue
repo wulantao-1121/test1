@@ -5,7 +5,7 @@
     <div id="crumbs">
       <el-breadcrumb separator>
         <el-breadcrumb-item><router-link to="/">首页</router-link></el-breadcrumb-item>
-        <el-breadcrumb-item><a @click="$router.push(`/yiqi/page?page=${yiqiPage}&pageSize=10`)">仪器列表</a></el-breadcrumb-item>
+        <el-breadcrumb-item><a @click="$router.push(`/yiqi/page?page=${yiqiPage||1}&pageSize=10`)">仪器列表</a></el-breadcrumb-item>
         <el-breadcrumb-item><a @click="$router.push(`/yiqi/details/${detailsPage}`)">仪器详情</a></el-breadcrumb-item>
         <el-breadcrumb-item><a href="javascript:;">预约信息</a></el-breadcrumb-item>
       </el-breadcrumb>
@@ -55,7 +55,7 @@
             <template slot="dateCell" slot-scope="{data}">
               <div>{{ data.day.split('-').slice(1).join('-') }}</div>
               <div v-for="(item,index) in getTime" :key="index" ref="boxred">
-                <div v-if="data.day===item.stime.slice(0,10)" style="height: 100%;" ref="time">
+                <div v-if="data.day===item.stime.slice(0,10)" ref="time">
                   <div v-if="item.isRed==true" ref="red"></div>
                   <div v-if="item.isRed==false" ref="orange"></div>
                 </div>
@@ -120,7 +120,7 @@ export default {
           duration: 500
         })
         this.getDetailsVal()
-        location.reload()
+        // location.reload()
       } catch (error) {
         this.$message({
           message: '预约失败',
@@ -134,24 +134,54 @@ export default {
     }
   },
   mounted() {
+    let nextMonth = document.querySelector('.el-button-group').children[2]
+    nextMonth.addEventListener('click', () => {
+      this.yuyuetime.month += 1
+      if (this.yuyuetime.month > 12) {
+        this.yuyuetime.year += 1
+        this.yuyuetime.month = 1
+      }
+      this.$store.dispatch('yuyuetime', this.yuyuetime)
+    })
+    let upperMonth = document.querySelector('.el-button-group').children[0]
+    upperMonth.addEventListener('click', () => {
+      this.yuyuetime.month -= 1
+      if (this.yuyuetime.month < 1) {
+        this.yuyuetime.year -= 1
+        this.yuyuetime.month = 12
+      }
+      this.$store.dispatch('yuyuetime', this.yuyuetime)
+    })
+    let today = document.querySelector('.el-button-group').children[1]
+    today.addEventListener('click', () => {
+      this.yuyuetime.year = new Date().getFullYear()
+      this.yuyuetime.month = new Date().getMonth() + 1
+      this.$store.dispatch('yuyuetime', this.yuyuetime)
+    })
     this.getDetailsVal()
   },
   updated() {
-    if (this.$refs.boxred) {
-      for (let i = 0; i < this.$refs.boxred.length; i++) {
-        if (this.$refs.boxred[i].childElementCount <= 0) {
-          this.$refs.boxred[i].remove()
-        }
+    if (this.$store.state.reservation.yuyuetime.length == 0) {
+      this.$nextTick(() => {
+        document.querySelectorAll('.el-calendar-day').forEach(day => {
+          day.style.background = '#fff'
+        })
+      })
+    }
+    let boxred = this.$refs.boxred.length
+
+    for (let i = 0; i < this.$refs.boxred.length; i++) {
+      if (this.$refs.boxred[i].children.length == 0) {
+        this.$refs.boxred[i].parentElement.style.background = '#fff'
       }
     }
-    // 日历背景色变红色
+
     let red = this.$refs.red
     if (red) {
       for (let i = 0; i < red.length; i++) {
         red[i].parentElement.parentElement.parentElement.style.background = 'rgb(250, 60, 0)'
       }
     }
-    // 日历背景色变黄色
     let orange = this.$refs.orange
     if (orange) {
       for (let j = 0; j < orange.length; j++) {

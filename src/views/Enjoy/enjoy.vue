@@ -62,6 +62,7 @@ export default {
   },
   beforeCreate() {
     this.$bus.$off('delete')
+    this.$bus.$off('load')
   },
   created() {},
   mounted() {
@@ -72,10 +73,21 @@ export default {
       if (value === 0) {
         this.getEnjoyData()
         if (this.$store.state.enjoy.enjoyList.records.length - 1 === 0) {
-          this.enjoy.page = this.$route.query.page - 1
-          this.$router.push({ name: 'enjoy', query: { page: this.enjoy.page, pageSize: this.enjoy.pageSize } })
-          this.$store.dispatch('getEnjoy', this.enjoy)
+          if (this.$route.query.page === 1) {
+            this.enjoy.page = 1
+            this.$store.dispatch('getEnjoy', this.enjoy)
+          } else if (this.$route.query.page > 1) {
+            this.enjoy.page = this.$route.query.page - 1
+            this.$router.push({ name: 'enjoy', query: { page: this.enjoy.page, pageSize: this.enjoy.pageSize } })
+            this.$store.dispatch('getEnjoy', this.enjoy)
+          }
         }
+      }
+    })
+    this.$bus.$on('load', value => {
+      if (value) {
+        this.getEnjoyData()
+        location.reload()
       }
     })
   },

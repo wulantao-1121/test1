@@ -38,6 +38,7 @@ const actions = {
   },
   // 修改仪器
   async xiuGaiYiqi({ commit }, params) {
+    console.log(params)
     let res = await xiugaoYiqi(params)
     if (res.code == 1) {
       return res.data
@@ -72,7 +73,7 @@ const actions = {
     if (res.code == 1) {
       return 'ok'
     } else {
-      return Promise.reject(new Error(res.data))
+      return Promise.reject(new Error(res.msg))
     }
   },
   // 维修

@@ -74,9 +74,11 @@ export default {
         orders: [],
         total: '', //返回数据的总个数
         pages: ''
-      }
+      },
+      token: localStorage.getItem('token')
     }
   },
+
   methods: {
     // 退出登录
     loginOut() {
