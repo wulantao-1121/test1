@@ -12,9 +12,8 @@ const mutations = {
   }
 }
 const actions = {
-  async getSrarch({ commit }, params = {}) {
+  async getSrarch({ commit }, params) {
     let res = await search(params)
-
     if (res.code == 1) {
       commit('SEARCH', res.data)
     }

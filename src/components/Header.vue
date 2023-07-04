@@ -49,8 +49,8 @@
         <div class="search">
           <el-form :label-position="labelPosition" label-width="80px" :model="searchFrom">
             <el-form-item>
-              <el-input v-model="searchFrom.title" placeholder="请输入要搜索的新闻或公告"></el-input>
-              <el-button type="primary" @click="$router.push(`/search/${searchFrom.title}`)">搜索</el-button>
+              <el-input v-model="searchFrom.biaoti" placeholder="请输入要搜索的新闻或公告"></el-input>
+              <el-button type="primary" @click="$router.push(`/search/${searchFrom.biaoti}`)">搜索</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -66,7 +66,7 @@ export default {
     return {
       labelPosition: 'right',
       searchFrom: {
-        title: ''
+        biaoti: ''
       },
       yiqi: {
         page: 1, //当前页数

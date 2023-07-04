@@ -12,7 +12,7 @@ const requests = axios.create({
 
 // 请求拦截器
 requests.interceptors.request.use(config => {
-  //
+  //判断是否登录
   if (store.state.login.token) {
     config.headers.Token = store.state.login.token
   }

@@ -30,6 +30,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.$route.params.biaoti)
     this.$store.dispatch('getSrarch', this.$route.params)
   },
   updated() {

@@ -29,7 +29,7 @@ const router = new VueRouter({
 
         {
           name: 'search',
-          path: 'search/:title',
+          path: 'search/:biaoti',
           component: () => import('../views/Search/search.vue')
         },
         {

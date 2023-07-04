@@ -21,7 +21,7 @@ export const Details = params => requests({ url: `/yiqi/details/${params}`, meth
 // 仪器搜索
 export const yiqiSearch = params => requests({ url: '/yiqi/page?', method: 'get', params })
 // 首页搜索
-export const search = params => requests({ url: `/wenzhang/find/${params.title}`, method: 'get', params })
+export const search = params => requests({ url: `/wenzhang/find/${params.biaoti}`, method: 'get', params })
 //新闻和公告
 export const article = params => requests({ url: `/wenzhang/page?`, method: 'get', params })
 // 热门仪器

@@ -1,7 +1,7 @@
 <template>
   <ul class="search_ul">
     <li class="search_li" v-for="item in searchList" :key="item.id">
-      <a href="javascript:;" class="search_a">{{ item.biaoti }}</a>
+      <a @click="$router.push(`/newsDateils?wenzhang=${item.id}`)" class="search_a">{{ item.biaoti }}</a>
       <span class="search_span">{{ item.addtime }}</span>
     </li>
   </ul>
