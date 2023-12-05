@@ -7,7 +7,7 @@ import axios from 'axios'
 // 利用axios对象的方法create，去创建一个axios实例
 const requests = axios.create({
   // 配置对象
-  baseURL: 'http://localhost:8080/'
+  baseURL: 'http://10.99.7.5:8080/'
 })
 
 // 请求拦截器

@@ -6,6 +6,10 @@
   font-size: 30px;
 }
 
+.cursor {
+  cursor: default;
+}
+
 // index页面主体内容
 .main {
   margin: auto;
@@ -39,9 +43,11 @@
       background-color: blue;
 
       h1 {
+        word-wrap: break-word;
         font-size: 18px;
         color: #fff;
         font-weight: normal;
+        .cursor
       }
 
       .t {
@@ -52,17 +58,24 @@
       }
 
       p {
+        height: 180px;
         margin: 15px 0;
         font-size: 14px;
         color: #fff;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 10;
+        .cursor
       }
 
-      a {
+      .moreAndmore {
         margin: 10px 0;
         display: block;
         line-height: 30px;
         font-size: 14px;
         color: #fff;
+        cursor: pointer;
       }
     }
 
@@ -84,6 +97,7 @@
         font-size: 18px;
         color: #fff;
         font-weight: normal;
+        .cursor
       }
 
       .myscroll {
@@ -94,6 +108,7 @@
             a {
               color: #fff;
               line-height: 35px;
+              .cursor
             }
           }
         }
@@ -102,6 +117,7 @@
 
       .yyxt {
         display: block;
+        cursor: pointer;
       }
 
       .yyxt {
@@ -121,6 +137,7 @@
     align-items: center;
     width: 1200px;
     height: 125px;
+    .cursor;
 
     ul {
       width: 100%;
@@ -160,7 +177,8 @@
     margin-top: 10px;
 
     .news_header {
-      @title_header()
+      @title_header();
+      .cursor
     }
 
     .container {
@@ -194,6 +212,7 @@
               text-align: center;
               height: 100%;
               width: 54px;
+              .cursor;
 
               .sun,
               .years {
@@ -224,6 +243,7 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+                cursor: pointer
               }
 
               .news_content {
@@ -236,6 +256,7 @@
                 font-size: 14px;
                 line-height: 20px;
                 color: #797979;
+                .cursor
               }
             }
 
@@ -262,7 +283,8 @@
   // 通知公告
   .notice {
     .notice_header {
-      @title_header()
+      @title_header();
+      .cursor
     }
 
     ul {
@@ -281,6 +303,7 @@
           margin-right: 5px;
           height: 60px;
           width: 115px;
+          .cursor;
 
           .sun,
           .years {
@@ -309,6 +332,7 @@
           font-weight: normal;
           font-size: 16px;
           color: #333;
+          cursor: pointer;
         }
 
         .notice_content {
@@ -321,6 +345,7 @@
           margin-top: 5px;
           font-size: 14px;
           color: #797777;
+          .cursor
         }
 
       }

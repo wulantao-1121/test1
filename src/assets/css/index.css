@@ -1,3 +1,6 @@
+.cursor {
+  cursor: default;
+}
 .main {
   margin: auto;
   width: 1300px;
@@ -27,9 +30,11 @@
   background-color: blue;
 }
 .main .main_box .left h1 {
+  word-wrap: break-word;
   font-size: 18px;
   color: #fff;
   font-weight: normal;
+  cursor: default;
 }
 .main .main_box .left .t {
   margin: 10px 0;
@@ -38,16 +43,23 @@
   background: #fff;
 }
 .main .main_box .left p {
+  height: 180px;
   margin: 15px 0;
   font-size: 14px;
   color: #fff;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 10;
+  cursor: default;
 }
-.main .main_box .left a {
+.main .main_box .left .moreAndmore {
   margin: 10px 0;
   display: block;
   line-height: 30px;
   font-size: 14px;
   color: #fff;
+  cursor: pointer;
 }
 .main .main_box .center {
   background-color: yellow;
@@ -65,6 +77,7 @@
   font-size: 18px;
   color: #fff;
   font-weight: normal;
+  cursor: default;
 }
 .main .main_box .right .myscroll ul li {
   height: 35px;
@@ -72,9 +85,11 @@
 .main .main_box .right .myscroll ul li a {
   color: #fff;
   line-height: 35px;
+  cursor: default;
 }
 .main .main_box .right .yyxt {
   display: block;
+  cursor: pointer;
 }
 .main .main_box .right .yyxt {
   margin: 12px auto;
@@ -90,6 +105,7 @@
   align-items: center;
   width: 1200px;
   height: 125px;
+  cursor: default;
 }
 .main .tongji ul {
   width: 100%;
@@ -123,6 +139,7 @@
   text-align: center;
   line-height: 70px;
   font-size: 30px;
+  cursor: default;
 }
 .main .news .container {
   margin-top: 20px;
@@ -152,6 +169,7 @@
   text-align: center;
   height: 100%;
   width: 54px;
+  cursor: default;
 }
 .main .news .container .container_list ul li .data .sun,
 .main .news .container .container_list ul li .data .years {
@@ -177,6 +195,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: pointer;
 }
 .main .news .container .container_list ul li .content .news_content {
   overflow: hidden;
@@ -188,6 +207,7 @@
   font-size: 14px;
   line-height: 20px;
   color: #797979;
+  cursor: default;
 }
 .main .news .news_more {
   margin: 40px 0;
@@ -207,6 +227,7 @@
   text-align: center;
   line-height: 70px;
   font-size: 30px;
+  cursor: default;
 }
 .main .notice ul {
   display: flex;
@@ -223,6 +244,7 @@
   margin-right: 5px;
   height: 60px;
   width: 115px;
+  cursor: default;
 }
 .main .notice ul li .notice_data .sun,
 .main .notice ul li .notice_data .years {
@@ -246,6 +268,7 @@
   font-weight: normal;
   font-size: 16px;
   color: #333;
+  cursor: pointer;
 }
 .main .notice ul li .notice_content {
   overflow: hidden;
@@ -257,6 +280,7 @@
   margin-top: 5px;
   font-size: 14px;
   color: #797777;
+  cursor: default;
 }
 .main .notice .notice_more {
   padding: 40px;

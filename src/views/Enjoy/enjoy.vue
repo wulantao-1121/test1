@@ -72,6 +72,7 @@ export default {
     this.$bus.$on('delete', value => {
       if (value === 0) {
         this.getEnjoyData()
+        // 判断每一页数组里的数据还有没有，如果没有就进行翻页
         if (this.$store.state.enjoy.enjoyList.records.length - 1 === 0) {
           if (this.$route.query.page === 1) {
             this.enjoy.page = 1
@@ -84,6 +85,7 @@ export default {
         }
       }
     })
+    // 监听到dialogShow组件发送过来的触发事件,进行页面的刷新更新数据
     this.$bus.$on('load', value => {
       if (value) {
         this.getEnjoyData()

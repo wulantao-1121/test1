@@ -15,6 +15,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.cursor {
+  cursor: default;
+}
 .search_ul {
   .search_li {
     display: flex;
@@ -26,6 +29,7 @@ export default {
 
     .search_a {
       font-size: 14px;
+      cursor: pointer;
     }
 
     .search_span {

@@ -1,9 +1,15 @@
+.cursor {
+  cursor: default;
+}
+
 .news_container,
-.notice_container,.guide_container {
+.notice_container,
+.guide_container {
   margin: auto;
 
   .news_list,
-  .notice_list,.guide_list {
+  .notice_list,
+  .guide_list {
     margin: auto;
     width: 1200px;
     display: flex;
@@ -12,11 +18,13 @@
     margin-top: 25px;
 
     .news_ul,
-    .notice_ul,.guide_ul {
+    .notice_ul,
+    .guide_ul {
       width: 800px;
 
       .news_li,
-      .notice_li,.guide_li {
+      .notice_li,
+      .guide_li {
         display: flex;
         padding-bottom: 20px;
         margin-bottom: 20px;
@@ -24,7 +32,8 @@
         width: 800px;
 
         .news_img,
-        .notice_img,.guide_img {
+        .notice_img,
+        .guide_img {
           margin-right: 20px;
           width: 200px;
           height: 120px;
@@ -34,6 +43,7 @@
         .news_content,
         .notice_content,
         .guide_content {
+
           h1 {
             a {
               font-weight: normal;
@@ -45,20 +55,24 @@
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
+              cursor: pointer;
             }
           }
 
           .news_time,
-          .notice_time,.guide_time {
+          .notice_time,
+          .guide_time {
             color: #999;
             font-size: 12px;
+            .cursor;
           }
         }
       }
     }
 
     .news_hot,
-    .notice_hot,.guide_hot {
+    .notice_hot,
+    .guide_hot {
       width: 300px;
       height: 300px;
 
@@ -90,6 +104,7 @@
 
           a {
             font-size: 14px;
+            cursor: pointer;
           }
         }
       }

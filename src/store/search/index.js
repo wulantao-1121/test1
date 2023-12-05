@@ -1,7 +1,7 @@
 //search 仓库
 import { search } from '@/api/index'
 const state = {
-  searchList: {}
+  searchList: []
 }
 const mutations = {
   SEARCH(state, searchList) {

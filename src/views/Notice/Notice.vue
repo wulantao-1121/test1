@@ -17,7 +17,6 @@
       <div class="notice_hot">
         <div class="hot_title">
           <h1>热点公告</h1>
-          <a href="javascript:;" class="hot_more">更多>></a>
         </div>
         <ul class="hot_list">
           <NoticeHot v-for="item in hot.records" :key="item.id" :noticeHot="item"></NoticeHot>
@@ -61,12 +60,15 @@ export default {
     })
   },
   methods: {
+    // 发送公共请求
     getNotice() {
       this.$store.dispatch('notice', this.notice)
     },
+    // 发送热点公告
     getHot() {
       this.$store.dispatch('hot', this.hotList)
     },
+    // 页码设置
     getPage(index) {
       this.notice.page = index
       this.$router.push({ name: 'notice', query: { page: this.notice.page, pageSize: this.notice.pageSize, leixing: this.notice.leixing } })

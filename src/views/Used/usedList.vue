@@ -31,7 +31,7 @@ export default {
     }
   },
   created() {
-    this.img = 'http://localhost:8080/common/download?name=' + this.yishiyongList.yiqiDto.yiqitupian
+    this.img = 'http://10.99.7.5:808/common/download?name=' + this.yishiyongList.yiqiDto.yiqitupian
   }
 }
 </script>

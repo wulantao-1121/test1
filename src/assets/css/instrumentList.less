@@ -1,3 +1,7 @@
+.cursor {
+  cursor: default;
+}
+
 // 仪器样式
 form,
 input {
@@ -41,7 +45,6 @@ input {
       // margin: auto;
       width: 800px;
 
-
       .yiqi_li {
         display: flex;
         width: 800px;
@@ -64,14 +67,15 @@ input {
           width: 640px;
 
           h1 {
-
             font-size: 22px;
+            cursor: pointer;
           }
 
           dl {
             display: flex;
             flex-wrap: wrap;
             margin-top: 30px;
+            .cursor;
 
             dd {
               width: 50%;
@@ -79,6 +83,13 @@ input {
             }
           }
         }
+      }
+
+      .prompt {
+        font-size: 30px;
+        font-weight: 300;
+        margin-top: 100px;
+        text-align: center;
       }
     }
 
@@ -99,6 +110,7 @@ input {
           width: 100%;
 
           a {
+            cursor: pointer;
             font-size: 14px;
           }
         }

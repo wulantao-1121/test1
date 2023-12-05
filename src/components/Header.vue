@@ -21,6 +21,7 @@
     <div class="header_logo">
       <div class="logo">
         <img src="../assets/images/sdcit_logo_white.png" alt="" />
+        <div class="logo_title">仪器设备开放共享管理平台</div>
       </div>
     </div>
     <!-- nav导航 -->
@@ -47,10 +48,10 @@
           </li>
         </ul> <!-- @click="$router.push('/search')" -->
         <div class="search">
-          <el-form :label-position="labelPosition" label-width="80px" :model="searchFrom">
+          <el-form :label-position="labelPosition" label-width="80px" :model="searchFrom" @submit.native.prevent>
             <el-form-item>
-              <el-input v-model="searchFrom.biaoti" placeholder="请输入要搜索的新闻或公告"></el-input>
-              <el-button type="primary" @click="$router.push(`/search/${searchFrom.biaoti}`)">搜索</el-button>
+              <el-input v-model="searchFrom.biaoti" placeholder="请输入要搜索的新闻或公告" @keyup.enter.native="search"></el-input>
+              <el-button type="primary" @click="search">搜索</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -89,7 +90,22 @@ export default {
           this.$router.push('/')
         }
       } catch (error) {
-        alert(error.message)
+        this.$message({
+          type: 'error',
+          message: '退出失败',
+          duration: 1000
+        })
+      }
+    },
+    search() {
+      if (this.searchFrom.biaoti === '') {
+        this.$message({
+          type: 'error',
+          message: '搜索不能为空',
+          duration: 1000
+        })
+      } else {
+        this.$router.push(`/search/${this.searchFrom.biaoti}`)
       }
     }
   }

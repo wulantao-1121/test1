@@ -1,5 +1,4 @@
 // API进行统一管理
-
 import requests from './request'
 
 // 用户登录
@@ -41,25 +40,25 @@ export const getEnjoy = params => requests({ url: `/yiqi/page?`, method: 'get', 
 // 我的共享（添加仪器）
 export const addYiqi = params => requests({ url: '/yiqi', method: 'post', params })
 // 我的共享（修改）
-export const xiugaoYiqi = params => requests({ url: '/yiqi', method: 'put', params })
+export const xiugaoYiqi = params => requests({ url: '/yiqi/xg', method: 'post', params })
 // 我的共享（修改仪器回显到对话框里）
 export const HuiXian = data => requests({ url: `/yiqi/details/${data}`, method: 'get', data })
 // 回显照片
 export const getImages = data => requests({ url: `/common/download?name=${data}`, method: 'get', data })
-// 删除仪器
-export const Delete = params => requests({ url: `/yiqi?${params.ids}`, method: 'delete', params })
+// 删除仪器   加del改成post
+export const Delete = params => requests({ url: `/yiqi/del/?ids=${params.ids}`, method: 'post', params })
 // 点击收藏
 export const addCollect = params => requests({ url: '/shoucang', method: 'post', params })
 // 查看收藏
 export const viewCollect = params => requests({ url: `/shoucang/boolean?`, method: 'get', params })
 // 取消收藏
-export const deleteCollect = params => requests({ url: '/shoucang?', method: 'delete', params })
+export const deleteCollect = params => requests({ url: '/shoucang/del', method: 'post', params })
 // 预约的回显
 export const yuyuetime = params => requests({ url: `/yuyue/list?`, method: 'get', params })
 // 预约
 export const yuyue = params => requests({ url: '/yuyue', method: 'post', params })
 // 取消预约
-export const deleteYuYue = params => requests({ url: '/yuyue?', method: 'delete', params })
+export const deleteYuYue = params => requests({ url: '/yuyue/del', method: 'post', params })
 // 新闻、公告、规章指南详情
 export const newsDateils = params => requests({ url: `/wenzhang/xq?`, method: 'get', params })
 // 首页视频

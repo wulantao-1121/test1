@@ -29,13 +29,14 @@ export default {
         yiqifenleiId: '',
         yiqiming: '',
         page: 1,
-        pageSize: 10,
-        isUser: 'aa'
+        pageSize: 10
       }
     }
   },
   methods: {
+    // 搜索方法
     getForm(formInline) {
+      // 如果所有的字段为空的话就显示所有的仪器,否则就搜索选中的字段的数据
       if (this.formInline.xiId === '' && this.formInline.yiqifenleiId === '' && this.formInline.yiqiming === '') {
         this.$emit('sousuo', formInline)
         this.$store.dispatch('yiqiList', this.formInline)

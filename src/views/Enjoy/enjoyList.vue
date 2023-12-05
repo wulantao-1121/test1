@@ -4,7 +4,7 @@
       <img :src=this.img alt="" />
     </div>
     <div class="grxx_yiqi_img" v-else>
-      <img src="" alt="" />
+      <img src="@/assets/images/404img.jpg" alt="" />
     </div>
     <div class="grxx_yiqi_xiangqing">
       <h1 class="grxx_yiqi_h1"><a href="javascript:;">{{ enjoy.yiqiming }}</a></h1>
@@ -45,7 +45,7 @@ export default {
   },
 
   created() {
-    this.img = `http://localhost:8080/common/download?name=${this.enjoy.yiqitupian}`
+    this.img = `http://10.99.7.5:808/common/download?name=${this.enjoy.yiqitupian}`
   },
   mounted() {},
   methods: {
@@ -63,6 +63,7 @@ export default {
           type: 'success',
           duration: 1000
         })
+        // 向发送 enjoy.vue组件发送事件总线来刷新页面
         this.$bus.$emit('delete', 0)
       } catch (error) {
         this.$message({
@@ -76,12 +77,14 @@ export default {
     async weihu() {
       try {
         this.maintenance.id = this.enjoy.id
+        this.maintenance.yiqizhuangtai = 0
         await this.$store.dispatch('maintenance', this.maintenance)
         this.$message({
           message: '确认维修',
           type: 'success',
           duration: 1000
         })
+        // 向发送 enjoy.vue组件发送事件总线来刷新页面
         this.$bus.$emit('delete', 0)
       } catch (error) {
         this.$message({
@@ -96,12 +99,14 @@ export default {
       try {
         this.maintenance.id = this.enjoy.id
         this.maintenance.yiqizhuangtai = 1
+
         await this.$store.dispatch('EndRepair', this.maintenance)
         this.$message({
           message: '取消维修成功',
           type: 'success',
           duration: 1000
         })
+        // 向发送 enjoy.vue组件发送事件总线来刷新页面
         this.$bus.$emit('delete', 0)
       } catch (error) {
         this.$message({

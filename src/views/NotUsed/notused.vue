@@ -40,6 +40,7 @@ export default {
     this.$bus.$on('again', value => {
       if (value) {
         this.getweishiyong()
+        // 这是判断每次删除当前页面是否全部删除完，如果全部删除，就向前一页
         if (this.$store.state.used.weishiyongList.records.length - 1 === 0) {
           if (this.$route.query.page === 1) {
             this.weishiyong.page = 1
@@ -54,15 +55,17 @@ export default {
     })
   },
   methods: {
+    // 发送未使用请求
     getweishiyong() {
       this.$store.dispatch('weishiyong', this.weishiyong)
     },
+    // 页码设置
     getPage(index) {
       this.weishiyong.page = index
       this.$router.push({ name: 'weishiyong', query: { page: this.weishiyong.page, pageSize: this.weishiyong.pageSize, shiYong: this.weishiyong.shiYong, order: this.weishiyong.order } })
       this.getweishiyong()
     },
-    againRequest() {}
+   
   },
   computed: {
     ...mapState({

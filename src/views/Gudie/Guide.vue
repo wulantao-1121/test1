@@ -36,9 +36,11 @@ export default {
     gudieList
   },
   methods: {
+    // 发送请求
     getGuide() {
       this.$store.dispatch('getGuide', this.guideitem)
     },
+    // 页码组件
     getPage(index) {
       this.guideitem.page = index
       this.$router.push({ name: 'gudie', query: { page: this.guideitem.page, pageSize: this.guideitem.pageSize, leixing: this.guideitem.leixing } })
@@ -46,6 +48,7 @@ export default {
     }
   },
   mounted() {
+
     this.guideitem.page = this.$route.query.page || 1
     this.guideitem.pageSize = this.$route.pageSize || 10
     this.getGuide()

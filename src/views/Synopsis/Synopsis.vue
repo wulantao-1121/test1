@@ -26,6 +26,7 @@ export default {
     this.getSynopsis()
   },
   methods: {
+    // 发送平台简介请求
     getSynopsis() {
       this.$store.dispatch('getSynopsis')
     }

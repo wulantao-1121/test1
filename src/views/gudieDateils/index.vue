@@ -48,7 +48,9 @@ export default {
     }
   },
   created() {
+    // 拿到文章的id
     this.gudieid.id = this.$route.query.wenzhang
+    // 拿到id发送请求
     this.$store.dispatch('getGudieDateils', this.gudieid)
   },
   computed: {
@@ -63,11 +65,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.cursor {
+  cursor: default;
+}
 .gudieDateils {
   margin: auto;
   width: 1200px;
   .gudieDateils_head {
     border-bottom: dashed 1px #ccc;
+    .cursor;
     .gudieDateils_title {
       padding-top: 25px;
       font-size: 20px;
@@ -87,6 +93,7 @@ export default {
   }
   .gudieDateils_main {
     padding: 20px;
+    .cursor;
   }
 }
 /deep/table {

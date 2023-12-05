@@ -54,6 +54,7 @@
         <img width="100%" src="" alt="">
       </el-dialog>
     </el-form>
+    <div class="uploadPrompt">注意：选中照片之后照片自动上传，请谨慎修改</div>
     <div slot="footer" class="dialog-footer">
       <el-button @click="dialogFormVisible = false">取消</el-button>
       <el-button type="primary" @click="addAnUpdata">确 定</el-button>
@@ -88,12 +89,14 @@ export default {
       fenLei: state => state.enjoy.fenLei
     })
   },
+  // 创建之前销毁全局事件总线
   beforeCreate() {
     this.$bus.$off('add')
     this.$bus.$off('id')
   },
   created() {},
   mounted() {
+    // 接收事件
     this.$bus.$on('add', (value, tu) => {
       this.title = '修改仪器'
       this.isShow = value
@@ -104,11 +107,11 @@ export default {
         this.dialogFormVisible = true
       } else if (this.isShow === 1) {
         // 这是点击修改执行对话框
-        this.$store.dispatch('getImages', tu.yiqitupian)
-        this.imgUrl = `http://localhost:8080/common/download?name=${tu.yiqitupian}`
+        this.imgUrl = `http://10.99.7.5:808/common/download?name=${tu.yiqitupian}`
         this.dialogFormVisible = true
       }
     })
+      // 接收事件
     this.$bus.$on('id', value => {
       this.addForm.id = value
       this.$store.dispatch('HuiXian', this.addForm.id)
@@ -125,8 +128,9 @@ export default {
     handleSuccess(response, file, fileList) {
       this.addForm.yiqitupian = response.data.fileName
     },
+    //
     async addAnUpdata() {
-      console.log()
+      // 添加仪器成功
       if (this.isShow == 0) {
         try {
           await this.$store.dispatch('addYiqi', this.addForm)
@@ -135,8 +139,9 @@ export default {
             type: 'success',
             duration: 1000
           })
-
           this.dialogFormVisible = false
+          // 添加成功之后向enjoy发送一个触发事件让enjoy刷新页面
+          this.$bus.$emit('load', true)
         } catch (error) {
           this.$message({
             message: '添加失败',
@@ -144,7 +149,9 @@ export default {
             duration: 1000
           })
         }
-      } else if (this.isShow == 1) {
+      }
+      // 修改仪器成功
+      else if (this.isShow == 1) {
         try {
           await this.$store.dispatch('xiuGaiYiqi', this.addForm)
           this.$message({
@@ -153,6 +160,7 @@ export default {
             duration: 1000
           })
           this.dialogFormVisible = false
+          // 修改成功之后向enjoy发送一个触发事件让enjoy刷新页面
           this.$bus.$emit('load', true)
         } catch (error) {
           this.$message({

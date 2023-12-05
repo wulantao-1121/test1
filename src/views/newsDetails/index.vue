@@ -44,7 +44,6 @@ export default {
   },
   created() {
     this.newsid.id = this.$route.query.wenzhang
-    console.log(this.newsid)
     this.$store.dispatch('getNewsDateils', this.newsid)
   },
   methods: {
@@ -64,13 +63,16 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.cursor {
+  cursor: default;
+}
 .newsDateils {
   margin: auto;
   width: 1200px;
 
   .newsDateils_head {
     border-bottom: dashed 1px #ccc;
-
+    .cursor;
     .newsDateils_title {
       padding-top: 25px;
       font-size: 20px;
@@ -93,6 +95,7 @@ export default {
 
   .newsDateils_main {
     padding: 20px;
+    .cursor;
   }
 }
 /deep/table {

@@ -39,9 +39,11 @@ export default {
     })
   },
   methods: {
+    // 发送已使用请求
     getyishiyongData() {
       this.$store.dispatch('yishiyong', this.yishiyong)
     },
+    // 页码设置
     getPage(index) {
       this.yishiyong.page = index
       this.$router.push({ name: 'yishiyong', query: { page: this.yishiyong.page, pageSize: this.yishiyong.pageSize, shiYong: this.yishiyong.shiYong, order: this.yishiyong.order } })

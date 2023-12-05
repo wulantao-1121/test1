@@ -7,7 +7,7 @@
         <h1>{{ videoImg.yiqiname }}</h1>
         <div class="t"></div>
         <p>{{  videoImg.jianjie  }}</p>
-        <a @click="$router.push('/yiqi/page?page=1&pageSize=10')">更多设备>></a>
+        <a @click="$router.push('/yiqi/page?page=1&pageSize=10')" class="moreAndmore">更多设备>></a>
       </div>
       <div class="center">
         <video :src="videoImg.video" class="v" controls></video>
@@ -128,18 +128,23 @@ export default {
     })
   },
   methods: {
+    // 获取首页的仪器使用情况
     getHomeyiqi() {
       this.$store.dispatch('yiqiList', this.homelist)
     },
+    // 获取首页右侧的仪器列表
     getHomeList() {
       this.$store.dispatch('homeList', this.homeList)
     },
+    // 获取首页新闻
     getHomeNews() {
       this.$store.dispatch('article', this.news)
     },
+    // 获取首页公告
     getHomeNotice() {
       this.$store.dispatch('notice', this.notices)
     },
+    // 获取首页视频
     getHomeImgVideo() {
       this.$store.dispatch('getImgVideo')
     }

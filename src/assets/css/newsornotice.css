@@ -1,3 +1,6 @@
+.cursor {
+  cursor: default;
+}
 .news_container,
 .notice_container,
 .guide_container {
@@ -635,6 +638,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: pointer;
 }
 .news_container .news_list .news_ul .news_li .news_content .news_time,
 .notice_container .news_list .news_ul .news_li .news_content .news_time,
@@ -1367,6 +1371,7 @@
 .guide_container .guide_list .guide_ul .guide_li .guide_content .guide_time {
   color: #999;
   font-size: 12px;
+  cursor: default;
 }
 .news_container .news_list .news_hot,
 .notice_container .news_list .news_hot,
@@ -1631,6 +1636,7 @@
 .notice_container .guide_list .guide_hot .hot_list li a,
 .guide_container .guide_list .guide_hot .hot_list li a {
   font-size: 14px;
+  cursor: pointer;
 }
 .news_container .page,
 .notice_container .page,

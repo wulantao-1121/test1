@@ -1,7 +1,7 @@
 import { getCollecr } from '@/api/index'
 
 const state = {
-  collectList: {}
+  collectList: []
 }
 const mutations = {
   COLLECT(state, collectList) {

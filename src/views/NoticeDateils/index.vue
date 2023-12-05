@@ -49,7 +49,9 @@ export default {
     }
   },
   created() {
+    // 拿到公告id
     this.noticeid.id = this.$route.query.notice
+    // 发送公告详情请求
     this.$store.dispatch('getNoticeDateils', this.noticeid)
   },
   computed: {
@@ -64,11 +66,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.cursor {
+  cursor: default;
+}
 .noticeDateils {
   margin: auto;
   width: 1200px;
   .noticeDateils_head {
     border-bottom: dashed 1px #ccc;
+    .cursor;
     .noticeDateils_title {
       padding-top: 25px;
       font-size: 20px;
@@ -88,6 +94,7 @@ export default {
   }
   .noticeDateils_main {
     padding: 20px;
+    .cursor;
   }
 }
 /deep/table {

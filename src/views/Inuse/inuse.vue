@@ -33,12 +33,15 @@ export default {
     }
   },
   mounted() {
+
     this.getshiyongzhong()
   },
   methods: {
+    // 发送请求
     getshiyongzhong() {
       this.$store.dispatch('shiyongzhong', this.shiyongzhong)
     },
+    // 页码组件 
     getPage(index) {
       this.shiyongzhong.page = index
       this.$router.push({ name: 'shiyongzhong', query: { page: this.shiyongzhong.page, pageSize: this.shiyongzhong.pageSize, shiYong: this.shiyongzhong.shiYong, order: this.shiyongzhong.order } })

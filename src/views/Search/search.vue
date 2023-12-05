@@ -7,7 +7,7 @@
       </el-breadcrumb>
     </div>
     <div class="search">
-      <SearchList :searchList="search" v-if="this.isShow"></SearchList>
+      <SearchList :searchList="search" v-if="this.search.length>0"></SearchList>
       <div class="not" v-else>
         <h1>没有相关的文章</h1>
       </div>
@@ -30,16 +30,8 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route.params.biaoti)
+    // 发送搜索请求
     this.$store.dispatch('getSrarch', this.$route.params)
-  },
-  updated() {
-    this.searchLength = this.$store.state.search.searchList.length
-    if (this.searchLength > 0) {
-      this.isShow = true
-    } else {
-      this.isShow = false
-    }
   },
   computed: {
     ...mapState({

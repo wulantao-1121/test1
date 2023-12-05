@@ -17,7 +17,6 @@
       <div class="news_hot">
         <div class="hot_title">
           <h1>新闻热点</h1>
-          <a href="javascript:;" class="hot_more">更多>></a>
         </div>
         <ul class="hot_list">
           <newsHot v-for="item in hot.records" :key="item.id" :newsList="item"></newsHot>
@@ -59,10 +58,11 @@ export default {
     })
   },
   methods: {
+    // 发送新闻请求
     getNews() {
       this.$store.dispatch('news', this.newsitem)
     },
-
+    // 页码设置
     getPage(index) {
       this.newsitem.page = index
       this.$router.push({ name: 'news', query: { page: this.newsitem.page, pageSize: this.newsitem.pageSize, leixing: this.newsitem.leixing } })

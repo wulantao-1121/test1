@@ -1,10 +1,10 @@
 <template>
   <li class="grxx_yiqi_li">
     <div class="grxx_yiqi_img" v-if="shiyongzhong.yiqiDto.yiqitupian!==''">
-      <img :src="this.img" alt="" />
+      <img :src="this.img" alt="shiyongzhong.yiqiDto.yiqiming" />
     </div>
     <div class="grxx_yiqi_img" v-else>
-      <img src="" alt="" />
+      <img src="@/assets/images/404img.jpg" :alt="shiyongzhong.yiqiDto.yiqiming" />
     </div>
     <div class="grxx_yiqi_xiangqing">
       <h1 class="grxx_yiqi_h1"><a href="javascript:;">{{ shiyongzhong.yiqiDto.yiqiming }}</a></h1>
@@ -31,7 +31,7 @@ export default {
     }
   },
   created() {
-    this.img = 'http://localhost:8080/common/download?name=' + this.shiyongzhong.yiqiDto.yiqitupian
+    this.img = 'http://10.99.7.5:808/common/download?name=' + this.shiyongzhong.yiqiDto.yiqitupian
   }
 }
 </script>

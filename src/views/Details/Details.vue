@@ -12,8 +12,11 @@
     <div class="kong"></div>
     <div class="yiqi_details_content">
       <div class="yiqi_details">
-        <div class="yiqi_details_img">
-          <img src="" alt="" />
+        <div class="yiqi_details_img" v-if="this.yiqiDto.yiqitupian!=''">
+          <img :src="`http://10.99.7.5:808/common/download?name=${this.yiqiDto.yiqitupian}`" :alt="yiqiDto.yiqiming" />
+        </div>
+        <div class="yiqi_details_img" v-else>
+          <img src="@/assets/images/404img.jpg" :alt="yiqiDto.yiqiming" />
         </div>
         <div class="yiqi_details_parameter">
           <h1>{{ yiqiDto.yiqiming }}</h1>
@@ -152,6 +155,7 @@ export default {
   mounted() {},
   methods: {
     yuyue() {
+      // 判断有没有登录,如果没有登录就跳转到login 如果登录了就跳转到预约页面
       localStorage.setItem('yuyue', this.$route.params.id)
       if (localStorage.getItem('token')) {
         this.$router.push('/yiqi/reservation')
@@ -164,14 +168,19 @@ export default {
     },
     // 收藏
     btnCollect() {
-      this.collect.yiqiId = parseInt(this.$route.params.id)
-      this.$store.dispatch('Collect', this.collect)
+      if (localStorage.getItem('token')) {
+        this.collect.yiqiId = parseInt(this.$route.params.id)
+        this.$store.dispatch('Collect', this.collect)
+      } else {
+        this.$router.push('/login')
+      }
       this.viewCollect()
     },
     // 查看收藏
     viewCollect() {
       this.$store.dispatch('viewCollect', this.collect)
     },
+    // 点击取消收藏
     quxiaoCollect() {
       this.quxiao.ids = this.$route.params.id
       this.$store.dispatch('deleteCollect', this.quxiao)

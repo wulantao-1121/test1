@@ -4,7 +4,7 @@
       <img :src="this.img" alt="" />
     </div>
     <div class="grxx_yiqi_img" v-else>
-      <img src="" alt="" />
+      <img src="@/assets/images/404img.jpg" :alt="weishiyong.yiqiDto.yiqiming" />
     </div>
     <div class="grxx_yiqi_xiangqing">
       <h1 class="grxx_yiqi_h1">
@@ -36,9 +36,10 @@ export default {
     }
   },
   created() {
-    this.img = 'http://localhost:8080/common/download?name=' + this.weishiyong.yiqiDto.yiqitupian
+    this.img = 'http://10.99.7.5:808/common/download?name=' + this.weishiyong.yiqiDto.yiqitupian
   },
   methods: {
+    // 取消预约的请求
     deleteYuYue() {
       try {
         this.deleteyuyue.ids = this.weishiyong.id

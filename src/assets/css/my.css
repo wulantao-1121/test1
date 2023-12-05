@@ -170,10 +170,11 @@
   display: flex;
   align-items: center;
 }
-.my_content .grxx_box .right_sidebar div .grxx_yiqi_list .grxx_yiqi_ul .grxx_yiqi_li .grxx_yiqi_xiangqing .grxx_yiqi_neirong .grxx_yiqi_collect img {
+.my_content .grxx_box .right_sidebar div .grxx_yiqi_list .grxx_yiqi_ul .grxx_yiqi_li .grxx_yiqi_xiangqing .grxx_yiqi_neirong .grxx_yiqi_collect .collect {
   width: 20px;
   height: 20px;
   color: orange;
+  cursor: pointer;
 }
 .my_content .grxx_box .right_sidebar div .grxx_yiqi_list .grxx_yiqi_ul .grxx_yiqi_li .grxx_yiqi_xiangqing .grxx_yiqi_neirong .grxx_yiqi_share {
   display: flex;
@@ -216,4 +217,9 @@
 .my_content .grxx_box .right_sidebar .el-dialog .el-dialog__body .el-form .fujianpeizhi .el-textarea .el-textarea__inner,
 .my_content .grxx_box .right_sidebar .el-dialog .el-dialog__body .el-form .zhuyishixiang .el-textarea .el-textarea__inner {
   min-height: 100px !important;
+}
+.my_content .grxx_box .right_sidebar .el-dialog .el-dialog__body .uploadPrompt {
+  padding-top: 10px;
+  font-size: 15px;
+  color: red;
 }

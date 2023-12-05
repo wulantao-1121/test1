@@ -12,8 +12,11 @@
     <Yiqisearch :yiqixi="yiqiXi" :yiqifenlei="yiqiFenLei" @sousuo="sousuo"></Yiqisearch>
     <!-- 仪器列表 -->
     <div class="yiqi_list">
-      <ul class="yiqi_ul">
+      <ul class="yiqi_ul" v-if="this.yiqiList.records!=''">
         <YiqiList v-for="item in yiqiList.records" :key="item.id" :list="item"></YiqiList>
+      </ul>
+      <ul class="yiqi_ul" v-if="this.yiqiList.records==''">
+        <div class="prompt">没有要搜索的仪器</div>
       </ul>
       <!-- 热门仪器 -->
       <YiqiHot :hostList="yiqihot"></YiqiHot>
@@ -57,6 +60,7 @@ export default {
       }
     }
   },
+  created() {},
   mounted() {
     this.yiqi.page = this.$route.query.page || 1
     this.yiqi.pageSize = this.$route.query.pageSize || 10
@@ -64,6 +68,7 @@ export default {
     this.getyiqiHot()
     this.getyiqiXi()
     this.getYiQiFenlei()
+    sessionStorage.setItem('yiqiPage', this.yiqi.page)
   },
   computed: {
     ...mapState({
@@ -78,22 +83,27 @@ export default {
     getyiqidata() {
       this.$store.dispatch('yiqiList', this.yiqi)
     },
+    // 页码设置
     getPage(index) {
       this.$cleanup()
       this.yiqi.page = index
       this.$router.push({ name: 'yiqi', query: { page: this.yiqi.page, pageSize: this.yiqi.pageSize, xiId: this.yiqi.xiId, yiqifenleiId: this.yiqi.yiqifenleiId } })
       this.getyiqidata()
-      sessionStorage.setItem('yiqiPage', index)
+      sessionStorage.setItem('yiqiPage', this.yiqi.page)
     },
+    // 热点仪器
     getyiqiHot() {
       this.$store.dispatch('getyiqiHot', this.yiqiHot)
     },
+    // 获取所有的仪器请求
     getyiqiXi() {
       this.$store.dispatch('yiqiXi')
     },
+    // 获取所有的仪器分类
     getYiQiFenlei() {
       this.$store.dispatch('yiqiFenlei')
     },
+    // 搜索
     sousuo(value) {
       this.yiqi.xiId = value.xiId
       this.yiqi.yiqifenleiId = value.yiqifenleiId
@@ -103,7 +113,7 @@ export default {
       this.$store.commit('clearData')
     }
   },
-  beforeDestroy() {}
+  updated() {}
 }
 </script>
 

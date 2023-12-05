@@ -93,10 +93,6 @@ const actions = {
     } else {
       return Promise.reject(new Error(res.data))
     }
-  },
-  // 照片回显
-  async getImages({ commit }, data) {
-    let res = await getImages(data)
   }
 }
 const getters = {}

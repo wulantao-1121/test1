@@ -1,7 +1,8 @@
 import { Details, yuyuetime, yuyue } from '@/api/index'
 const state = {
   yuyueDetails: {},
-  yuyuetime: []
+  yuyuetime: [],
+  tishi: []
 }
 const mutations = {
   YUYUEDETAILS(state, yuyueDetails) {
@@ -16,6 +17,9 @@ const mutations = {
         }
       }
     }
+  },
+  TISHI(state, tishi) {
+    state.tishi = tishi
   },
   clearData(state) {
     state.yuyueDetails = {}

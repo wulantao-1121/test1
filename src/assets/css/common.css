@@ -31,13 +31,23 @@ body {
   background-color: #2b58ae;
 }
 .header_logo .logo {
+  display: flex;
+  align-items: center;
   margin: auto;
   width: 1200px;
   height: 140px;
   background-color: #2b58ae;
 }
 .header_logo .logo img {
-  width: 570px;
+  width: 450px;
+}
+.header_logo .logo .logo_title {
+  font-family: 华文彩云, 隶书, 华文楷体, 宋体;
+  font-weight: bold;
+  margin-left: 40px;
+  font-size: 40px;
+  color: #fff;
+  text-shadow: 10px 4px 4px rgba(0, 0, 0, 0.5);
 }
 .nav_body {
   height: 45px;

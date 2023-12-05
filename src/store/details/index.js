@@ -27,13 +27,13 @@ const actions = {
   async Collect({ commit }, params) {
     let res = await addCollect(params)
     if (res.code == 1) {
-      return 'ok'
+      commit('VIEWCOLLECT', res.code)
     }
   },
   // 查看是否收藏
   async viewCollect({ commit }, params) {
     let res = await viewCollect(params)
-    if (res.code == 1) {
+    if (res.code == 0) {
       commit('VIEWCOLLECT', res.code)
     } else {
       commit('VIEWCOLLECT', res.code)
